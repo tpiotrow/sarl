@@ -2,6 +2,7 @@
  */
 package io.sarl.lang.sarl.impl;
 
+import io.sarl.lang.sarl.InvariantConstraint;
 import io.sarl.lang.sarl.SarlAction;
 import io.sarl.lang.sarl.SarlAgent;
 import io.sarl.lang.sarl.SarlAnnotationType;
@@ -13,6 +14,7 @@ import io.sarl.lang.sarl.SarlBreakExpression;
 import io.sarl.lang.sarl.SarlCapacity;
 import io.sarl.lang.sarl.SarlCapacityUses;
 import io.sarl.lang.sarl.SarlClass;
+import io.sarl.lang.sarl.SarlConstraint;
 import io.sarl.lang.sarl.SarlConstructor;
 import io.sarl.lang.sarl.SarlContinueExpression;
 import io.sarl.lang.sarl.SarlEnumLiteral;
@@ -213,6 +215,20 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 	 * @generated
 	 */
 	private EClass sarlFormalParameterEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sarlConstraintEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass invariantConstraintEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -699,6 +715,46 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSarlConstraint()
+	{
+		return sarlConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInvariantConstraint()
+	{
+		return invariantConstraintEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInvariantConstraint_Name()
+	{
+		return (EAttribute)invariantConstraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInvariantConstraint_Condition()
+	{
+		return (EReference)invariantConstraintEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SarlFactory getSarlFactory()
 	{
 		return (SarlFactory)getEFactoryInstance();
@@ -787,6 +843,12 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 
 		sarlFormalParameterEClass = createEClass(SARL_FORMAL_PARAMETER);
 		createEReference(sarlFormalParameterEClass, SARL_FORMAL_PARAMETER__DEFAULT_VALUE);
+
+		sarlConstraintEClass = createEClass(SARL_CONSTRAINT);
+
+		invariantConstraintEClass = createEClass(INVARIANT_CONSTRAINT);
+		createEAttribute(invariantConstraintEClass, INVARIANT_CONSTRAINT__NAME);
+		createEReference(invariantConstraintEClass, INVARIANT_CONSTRAINT__CONDITION);
 	}
 
 	/**
@@ -846,6 +908,8 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 		sarlBehaviorEClass.getESuperTypes().add(theXtendPackage.getXtendTypeDeclaration());
 		sarlSkillEClass.getESuperTypes().add(theXtendPackage.getXtendTypeDeclaration());
 		sarlFormalParameterEClass.getESuperTypes().add(theXtendPackage.getXtendParameter());
+		sarlConstraintEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+		invariantConstraintEClass.getESuperTypes().add(this.getSarlConstraint());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(sarlScriptEClass, SarlScript.class, "SarlScript", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -929,6 +993,12 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 
 		initEClass(sarlFormalParameterEClass, SarlFormalParameter.class, "SarlFormalParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSarlFormalParameter_DefaultValue(), theXbasePackage.getXExpression(), null, "defaultValue", null, 0, 1, SarlFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(sarlConstraintEClass, SarlConstraint.class, "SarlConstraint", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(invariantConstraintEClass, InvariantConstraint.class, "InvariantConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInvariantConstraint_Name(), ecorePackage.getEString(), "name", null, 0, 1, InvariantConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInvariantConstraint_Condition(), theXbasePackage.getXExpression(), null, "condition", null, 0, 1, InvariantConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

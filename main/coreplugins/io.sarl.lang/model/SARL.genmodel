@@ -70,5 +70,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SARL.ecore#//SarlArtifact/extends"/>
       <genOperations ecoreOperation="SARL.ecore#//SarlArtifact/isAbstract"/>
     </genClasses>
+    <genClasses ecoreClass="SARL.ecore#//SarlConstraint"/>
+    <genClasses ecoreClass="SARL.ecore#//InvariantConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SARL.ecore#//InvariantConstraint/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SARL.ecore#//InvariantConstraint/condition"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

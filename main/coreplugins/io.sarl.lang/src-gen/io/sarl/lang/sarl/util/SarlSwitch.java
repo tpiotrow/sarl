@@ -313,6 +313,23 @@ public class SarlSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case SarlPackage.SARL_CONSTRAINT:
+			{
+				SarlConstraint sarlConstraint = (SarlConstraint)theEObject;
+				T result = caseSarlConstraint(sarlConstraint);
+				if (result == null) result = caseXExpression(sarlConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SarlPackage.INVARIANT_CONSTRAINT:
+			{
+				InvariantConstraint invariantConstraint = (InvariantConstraint)theEObject;
+				T result = caseInvariantConstraint(invariantConstraint);
+				if (result == null) result = caseSarlConstraint(invariantConstraint);
+				if (result == null) result = caseXExpression(invariantConstraint);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -681,6 +698,38 @@ public class SarlSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseSarlFormalParameter(SarlFormalParameter object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSarlConstraint(SarlConstraint object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Invariant Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Invariant Constraint</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInvariantConstraint(InvariantConstraint object)
 	{
 		return null;
 	}

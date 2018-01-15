@@ -40,6 +40,13 @@ public class SARLGrammarKeywordAccess {
 	@Inject
 	private SARLGrammarAccess grammarAccess;
 
+	/** Keyword: {@code named}.
+	 * Source: io.sarl.lang.SARL
+	 */
+	public String getNamedKeyword() {
+		return this.grammarAccess.getInvariantConstraintAccess().getNamedKeyword_2_0().getValue();
+	}
+
 	/** Keyword: {@code def}.
 	 * Source: io.sarl.lang.SARL
 	 */
@@ -185,6 +192,13 @@ public class SARLGrammarKeywordAccess {
 	 */
 	public String getFullStopKeyword() {
 		return this.grammarAccess.getQualifiedNameInStaticImportAccess().getFullStopKeyword_1().getValue();
+	}
+
+	/** Keyword: {@code invariant}.
+	 * Source: io.sarl.lang.SARL
+	 */
+	public String getInvariantKeyword() {
+		return this.grammarAccess.getInvariantConstraintAccess().getInvariantKeyword_0().getValue();
 	}
 
 	/** Keyword: {@code /}.
@@ -863,6 +877,7 @@ public class SARLGrammarKeywordAccess {
 			kws.add(getVolatileKeyword());
 			kws.add(getRequiresKeyword());
 			kws.add(getFalseKeyword());
+			kws.add(getNamedKeyword());
 			kws.add(getWithKeyword());
 			kws.add(getItKeyword());
 			kws.add(getSwitchKeyword());
@@ -905,6 +920,7 @@ public class SARLGrammarKeywordAccess {
 			kws.add(getOverrideKeyword());
 			kws.add(getThrowKeyword());
 			kws.add(getElseKeyword());
+			kws.add(getInvariantKeyword());
 			kws.add(getForKeyword());
 			kws.add(getDefaultKeyword());
 			kws.add(getNativeKeyword());
@@ -949,6 +965,7 @@ public class SARLGrammarKeywordAccess {
 			kws = new HashSet<>();
 			kws.add(getAsKeyword());
 			kws.add(getRequiresKeyword());
+			kws.add(getNamedKeyword());
 			kws.add(getWithKeyword());
 			kws.add(getItKeyword());
 			kws.add(getArtifactKeyword());
@@ -965,6 +982,7 @@ public class SARLGrammarKeywordAccess {
 			kws.add(getDefKeyword());
 			kws.add(getFiresKeyword());
 			kws.add(getOverrideKeyword());
+			kws.add(getInvariantKeyword());
 			kws.add(getIsStaticAssumeKeyword());
 			kws.add(getBehaviorKeyword());
 			kws.add(getExtensionExtensionKeyword());

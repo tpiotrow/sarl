@@ -87,6 +87,7 @@ public class SarlFactoryImpl extends EFactoryImpl implements SarlFactory
 			case SarlPackage.SARL_BEHAVIOR: return createSarlBehavior();
 			case SarlPackage.SARL_SKILL: return createSarlSkill();
 			case SarlPackage.SARL_FORMAL_PARAMETER: return createSarlFormalParameter();
+			case SarlPackage.INVARIANT_CONSTRAINT: return createInvariantConstraint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -343,6 +344,17 @@ public class SarlFactoryImpl extends EFactoryImpl implements SarlFactory
 	{
 		SarlFormalParameterImpl sarlFormalParameter = new SarlFormalParameterImpl();
 		return sarlFormalParameter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InvariantConstraint createInvariantConstraint()
+	{
+		InvariantConstraintImpl invariantConstraint = new InvariantConstraintImpl();
+		return invariantConstraint;
 	}
 
 	/**

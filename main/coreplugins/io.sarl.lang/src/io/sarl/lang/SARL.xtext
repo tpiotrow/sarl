@@ -210,7 +210,7 @@ AOPMember returns xtend::XtendMember:
 				name=ValidID (':' type=JvmTypeReference)?
 			) 
 		)
-		('=' initialValue=XExpression)? ';'?
+		('=' initialValue=XExpression)? ('with' invariant=InvariantConstraint)? ';'?
 	|
 		// Constructor
 		{SarlConstructor.annotationInfo = current} modifiers+=CommonModifier*
@@ -275,6 +275,10 @@ AOPMember returns xtend::XtendMember:
 		'annotation' name=ValidID
 		'{' members+=AnnotationField* '}'
 	)
+;
+
+InvariantConstraint:
+	'invariant' condition=XExpression ('named' name=ID)?
 ;
 
 // Members for the object-oriented types

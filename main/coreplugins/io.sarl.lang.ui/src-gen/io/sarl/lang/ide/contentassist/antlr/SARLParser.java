@@ -213,6 +213,7 @@ public class SARLParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getAOPMemberAccess().getGroup_2_3_2_1_2_1(), "rule__AOPMember__Group_2_3_2_1_2_1__0");
 					put(grammarAccess.getAOPMemberAccess().getGroup_2_3_2_1_2_1_1(), "rule__AOPMember__Group_2_3_2_1_2_1_1__0");
 					put(grammarAccess.getAOPMemberAccess().getGroup_2_3_3(), "rule__AOPMember__Group_2_3_3__0");
+					put(grammarAccess.getAOPMemberAccess().getGroup_2_3_4(), "rule__AOPMember__Group_2_3_4__0");
 					put(grammarAccess.getAOPMemberAccess().getGroup_2_4(), "rule__AOPMember__Group_2_4__0");
 					put(grammarAccess.getAOPMemberAccess().getGroup_2_4_3(), "rule__AOPMember__Group_2_4_3__0");
 					put(grammarAccess.getAOPMemberAccess().getGroup_2_4_3_2(), "rule__AOPMember__Group_2_4_3_2__0");
@@ -251,6 +252,8 @@ public class SARLParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getAOPMemberAccess().getGroup_2_8_5(), "rule__AOPMember__Group_2_8_5__0");
 					put(grammarAccess.getAOPMemberAccess().getGroup_2_8_5_1(), "rule__AOPMember__Group_2_8_5_1__0");
 					put(grammarAccess.getAOPMemberAccess().getGroup_2_9(), "rule__AOPMember__Group_2_9__0");
+					put(grammarAccess.getInvariantConstraintAccess().getGroup(), "rule__InvariantConstraint__Group__0");
+					put(grammarAccess.getInvariantConstraintAccess().getGroup_2(), "rule__InvariantConstraint__Group_2__0");
 					put(grammarAccess.getMemberAccess().getGroup(), "rule__Member__Group__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_0(), "rule__Member__Group_2_0__0");
 					put(grammarAccess.getMemberAccess().getGroup_2_0_2_0(), "rule__Member__Group_2_0_2_0__0");
@@ -696,6 +699,7 @@ public class SARLParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getAOPMemberAccess().getNameAssignment_2_3_2_1_2_1_0(), "rule__AOPMember__NameAssignment_2_3_2_1_2_1_0");
 					put(grammarAccess.getAOPMemberAccess().getTypeAssignment_2_3_2_1_2_1_1_1(), "rule__AOPMember__TypeAssignment_2_3_2_1_2_1_1_1");
 					put(grammarAccess.getAOPMemberAccess().getInitialValueAssignment_2_3_3_1(), "rule__AOPMember__InitialValueAssignment_2_3_3_1");
+					put(grammarAccess.getAOPMemberAccess().getInvariantAssignment_2_3_4_1(), "rule__AOPMember__InvariantAssignment_2_3_4_1");
 					put(grammarAccess.getAOPMemberAccess().getModifiersAssignment_2_4_1(), "rule__AOPMember__ModifiersAssignment_2_4_1");
 					put(grammarAccess.getAOPMemberAccess().getTypeParametersAssignment_2_4_3_1(), "rule__AOPMember__TypeParametersAssignment_2_4_3_1");
 					put(grammarAccess.getAOPMemberAccess().getTypeParametersAssignment_2_4_3_2_1(), "rule__AOPMember__TypeParametersAssignment_2_4_3_2_1");
@@ -746,6 +750,8 @@ public class SARLParser extends AbstractPartialContentAssistParser {
 					put(grammarAccess.getAOPMemberAccess().getModifiersAssignment_2_9_1(), "rule__AOPMember__ModifiersAssignment_2_9_1");
 					put(grammarAccess.getAOPMemberAccess().getNameAssignment_2_9_3(), "rule__AOPMember__NameAssignment_2_9_3");
 					put(grammarAccess.getAOPMemberAccess().getMembersAssignment_2_9_5(), "rule__AOPMember__MembersAssignment_2_9_5");
+					put(grammarAccess.getInvariantConstraintAccess().getConditionAssignment_1(), "rule__InvariantConstraint__ConditionAssignment_1");
+					put(grammarAccess.getInvariantConstraintAccess().getNameAssignment_2_1(), "rule__InvariantConstraint__NameAssignment_2_1");
 					put(grammarAccess.getMemberAccess().getAnnotationsAssignment_1(), "rule__Member__AnnotationsAssignment_1");
 					put(grammarAccess.getMemberAccess().getModifiersAssignment_2_0_1(), "rule__Member__ModifiersAssignment_2_0_1");
 					put(grammarAccess.getMemberAccess().getModifiersAssignment_2_0_2_0_0(), "rule__Member__ModifiersAssignment_2_0_2_0_0");

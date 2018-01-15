@@ -440,6 +440,10 @@ ruleAOPMember:
 			'='
 			ruleXExpression
 		)?
+		(
+			'with'
+			ruleInvariantConstraint
+		)?
 		';'?
 		    |
 		ruleCommonModifier
@@ -637,6 +641,16 @@ ruleAOPMember:
 		*
 		'}'
 	)
+;
+
+// Rule InvariantConstraint
+ruleInvariantConstraint:
+	'invariant'
+	ruleXExpression
+	(
+		'named'
+		RULE_ID
+	)?
 ;
 
 // Rule Member

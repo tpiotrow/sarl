@@ -230,6 +230,15 @@ public interface SarlFactory extends EFactory
 	SarlFormalParameter createSarlFormalParameter();
 
 	/**
+	 * Returns a new object of class '<em>Invariant Constraint</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Invariant Constraint</em>'.
+	 * @generated
+	 */
+	InvariantConstraint createInvariantConstraint();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

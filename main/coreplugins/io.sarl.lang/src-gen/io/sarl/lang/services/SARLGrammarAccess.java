@@ -1786,7 +1786,11 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_2_3_3_0 = (Keyword)cGroup_2_3_3.eContents().get(0);
 		private final Assignment cInitialValueAssignment_2_3_3_1 = (Assignment)cGroup_2_3_3.eContents().get(1);
 		private final RuleCall cInitialValueXExpressionParserRuleCall_2_3_3_1_0 = (RuleCall)cInitialValueAssignment_2_3_3_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_2_3_4 = (Keyword)cGroup_2_3.eContents().get(4);
+		private final Group cGroup_2_3_4 = (Group)cGroup_2_3.eContents().get(4);
+		private final Keyword cWithKeyword_2_3_4_0 = (Keyword)cGroup_2_3_4.eContents().get(0);
+		private final Assignment cInvariantAssignment_2_3_4_1 = (Assignment)cGroup_2_3_4.eContents().get(1);
+		private final RuleCall cInvariantInvariantConstraintParserRuleCall_2_3_4_1_0 = (RuleCall)cInvariantAssignment_2_3_4_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_2_3_5 = (Keyword)cGroup_2_3.eContents().get(5);
 		private final Group cGroup_2_4 = (Group)cAlternatives_2.eContents().get(4);
 		private final Action cSarlConstructorAnnotationInfoAction_2_4_0 = (Action)cGroup_2_4.eContents().get(0);
 		private final Assignment cModifiersAssignment_2_4_1 = (Assignment)cGroup_2_4.eContents().get(1);
@@ -2003,7 +2007,8 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//	| modifiers+=FieldModifier
 		//	modifiers+=CommonModifier* (modifiers+='extension'
 		//	name=ValidID ':' type=JvmTypeReference
-		//	| name=ValidID (':' type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ';'?
+		//	| name=ValidID (':' type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ('with' invariant=InvariantConstraint)?
+		//	';'?
 		//	| {SarlConstructor.annotationInfo=current} modifiers+=CommonModifier*
 		//	'new' ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? ('(' (parameters+=Parameter
 		//	(',' parameters+=Parameter)*)?
@@ -2043,18 +2048,19 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//{SarlField.annotationInfo=current} modifiers+=CommonModifier* (modifiers+='extension' (modifiers+=FieldModifier |
 		//modifiers+=CommonModifier)* name=ValidID ':' type=JvmTypeReference | modifiers+=FieldModifier
 		//modifiers+=CommonModifier* (modifiers+='extension' name=ValidID ':' type=JvmTypeReference | name=ValidID (':'
-		//type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ';'? | {SarlConstructor.annotationInfo=current}
-		//modifiers+=CommonModifier* 'new' ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
-		//('(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (('throws' exceptions+=JvmTypeReference (','
-		//exceptions+=JvmTypeReference)*)? & ('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?)
-		//expression=XBlockExpression | {SarlAction.annotationInfo=current} modifiers+=CommonModifier* modifiers+=MethodModifier
-		//(modifiers+=CommonModifier | modifiers+=MethodModifier)* ('<' typeParameters+=JvmTypeParameter (','
-		//typeParameters+=JvmTypeParameter)* '>')? name=FunctionID ('(' (parameters+=Parameter (',' parameters+=Parameter)*)?
-		//')')? (':' (returnType=TypeReferenceWithTypeArgs | returnType=TypeReferenceNoTypeArgs))? (('throws'
-		//exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)? & ('fires' firedEvents+=JvmTypeReference (','
-		//firedEvents+=JvmTypeReference)*)? & ('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?)
-		//(expression=XBlockExpression | ';')? | {SarlClass.annotationInfo=current} modifiers+=CommonModifier* 'class'
-		//name=ValidID ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? (('extends'
+		//type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ('with' invariant=InvariantConstraint)? ';'? |
+		//{SarlConstructor.annotationInfo=current} modifiers+=CommonModifier* 'new' ('<' typeParameters+=JvmTypeParameter (','
+		//typeParameters+=JvmTypeParameter)* '>')? ('(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (('throws'
+		//exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)? & ('with' typeParameters+=JvmTypeParameter (','
+		//typeParameters+=JvmTypeParameter)*)?) expression=XBlockExpression | {SarlAction.annotationInfo=current}
+		//modifiers+=CommonModifier* modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* ('<'
+		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? name=FunctionID ('('
+		//(parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (':' (returnType=TypeReferenceWithTypeArgs |
+		//returnType=TypeReferenceNoTypeArgs))? (('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)? &
+		//('fires' firedEvents+=JvmTypeReference (',' firedEvents+=JvmTypeReference)*)? & ('with'
+		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?) (expression=XBlockExpression | ';')? |
+		//{SarlClass.annotationInfo=current} modifiers+=CommonModifier* 'class' name=ValidID ('<'
+		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? (('extends'
 		//extends=JvmParameterizedTypeReference)? & ('implements' implements+=JvmParameterizedTypeReference (','
 		//implements+=JvmParameterizedTypeReference)*)?) '{' members+=Member* '}' | {SarlInterface.annotationInfo=current}
 		//modifiers+=CommonModifier* 'interface' name=ValidID ('<' typeParameters+=JvmTypeParameter (','
@@ -2081,18 +2087,18 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//capacities+=JvmParameterizedTypeReference)* ';'? | {SarlField.annotationInfo=current} modifiers+=CommonModifier*
 		//(modifiers+='extension' (modifiers+=FieldModifier | modifiers+=CommonModifier)* name=ValidID ':' type=JvmTypeReference
 		//| modifiers+=FieldModifier modifiers+=CommonModifier* (modifiers+='extension' name=ValidID ':' type=JvmTypeReference |
-		//name=ValidID (':' type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ';'? |
-		//{SarlConstructor.annotationInfo=current} modifiers+=CommonModifier* 'new' ('<' typeParameters+=JvmTypeParameter (','
-		//typeParameters+=JvmTypeParameter)* '>')? ('(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (('throws'
-		//exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)? & ('with' typeParameters+=JvmTypeParameter (','
-		//typeParameters+=JvmTypeParameter)*)?) expression=XBlockExpression | {SarlAction.annotationInfo=current}
-		//modifiers+=CommonModifier* modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* ('<'
-		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? name=FunctionID ('('
-		//(parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (':' (returnType=TypeReferenceWithTypeArgs |
-		//returnType=TypeReferenceNoTypeArgs))? (('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)? &
-		//('fires' firedEvents+=JvmTypeReference (',' firedEvents+=JvmTypeReference)*)? & ('with'
-		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?) (expression=XBlockExpression | ';')? |
-		//{SarlClass.annotationInfo=current} modifiers+=CommonModifier* 'class' name=ValidID ('<'
+		//name=ValidID (':' type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ('with' invariant=InvariantConstraint)?
+		//';'? | {SarlConstructor.annotationInfo=current} modifiers+=CommonModifier* 'new' ('<' typeParameters+=JvmTypeParameter
+		//(',' typeParameters+=JvmTypeParameter)* '>')? ('(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')')?
+		//(('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)? & ('with'
+		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?) expression=XBlockExpression |
+		//{SarlAction.annotationInfo=current} modifiers+=CommonModifier* modifiers+=MethodModifier (modifiers+=CommonModifier |
+		//modifiers+=MethodModifier)* ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')?
+		//name=FunctionID ('(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (':'
+		//(returnType=TypeReferenceWithTypeArgs | returnType=TypeReferenceNoTypeArgs))? (('throws' exceptions+=JvmTypeReference
+		//(',' exceptions+=JvmTypeReference)*)? & ('fires' firedEvents+=JvmTypeReference (',' firedEvents+=JvmTypeReference)*)? &
+		//('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?) (expression=XBlockExpression |
+		//';')? | {SarlClass.annotationInfo=current} modifiers+=CommonModifier* 'class' name=ValidID ('<'
 		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? (('extends'
 		//extends=JvmParameterizedTypeReference)? & ('implements' implements+=JvmParameterizedTypeReference (','
 		//implements+=JvmParameterizedTypeReference)*)?) '{' members+=Member* '}' | {SarlInterface.annotationInfo=current}
@@ -2206,7 +2212,7 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//{SarlField.annotationInfo=current} modifiers+=CommonModifier* (modifiers+='extension' (modifiers+=FieldModifier |
 		//modifiers+=CommonModifier)* name=ValidID ':' type=JvmTypeReference | modifiers+=FieldModifier
 		//modifiers+=CommonModifier* (modifiers+='extension' name=ValidID ':' type=JvmTypeReference | name=ValidID (':'
-		//type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ';'?
+		//type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ('with' invariant=InvariantConstraint)? ';'?
 		public Group getGroup_2_3() { return cGroup_2_3; }
 		
 		//{SarlField.annotationInfo=current}
@@ -2338,8 +2344,20 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//XExpression
 		public RuleCall getInitialValueXExpressionParserRuleCall_2_3_3_1_0() { return cInitialValueXExpressionParserRuleCall_2_3_3_1_0; }
 		
+		//('with' invariant=InvariantConstraint)?
+		public Group getGroup_2_3_4() { return cGroup_2_3_4; }
+		
+		//'with'
+		public Keyword getWithKeyword_2_3_4_0() { return cWithKeyword_2_3_4_0; }
+		
+		//invariant=InvariantConstraint
+		public Assignment getInvariantAssignment_2_3_4_1() { return cInvariantAssignment_2_3_4_1; }
+		
+		//InvariantConstraint
+		public RuleCall getInvariantInvariantConstraintParserRuleCall_2_3_4_1_0() { return cInvariantInvariantConstraintParserRuleCall_2_3_4_1_0; }
+		
 		//';'?
-		public Keyword getSemicolonKeyword_2_3_4() { return cSemicolonKeyword_2_3_4; }
+		public Keyword getSemicolonKeyword_2_3_5() { return cSemicolonKeyword_2_3_5; }
 		
 		//{SarlConstructor.annotationInfo=current} modifiers+=CommonModifier* 'new' ('<' typeParameters+=JvmTypeParameter (','
 		//typeParameters+=JvmTypeParameter)* '>')? ('(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (('throws'
@@ -2959,6 +2977,45 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_2_9_6() { return cRightCurlyBracketKeyword_2_9_6; }
+	}
+	public class InvariantConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.sarl.lang.SARL.InvariantConstraint");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cInvariantKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cConditionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cConditionXExpressionParserRuleCall_1_0 = (RuleCall)cConditionAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cNamedKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cNameAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_2_1_0 = (RuleCall)cNameAssignment_2_1.eContents().get(0);
+		
+		//InvariantConstraint:
+		//	'invariant' condition=XExpression ('named' name=ID)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'invariant' condition=XExpression ('named' name=ID)?
+		public Group getGroup() { return cGroup; }
+		
+		//'invariant'
+		public Keyword getInvariantKeyword_0() { return cInvariantKeyword_0; }
+		
+		//condition=XExpression
+		public Assignment getConditionAssignment_1() { return cConditionAssignment_1; }
+		
+		//XExpression
+		public RuleCall getConditionXExpressionParserRuleCall_1_0() { return cConditionXExpressionParserRuleCall_1_0; }
+		
+		//('named' name=ID)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'named'
+		public Keyword getNamedKeyword_2_0() { return cNamedKeyword_2_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2_1() { return cNameAssignment_2_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_1_0() { return cNameIDTerminalRuleCall_2_1_0; }
 	}
 	public class MemberElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.sarl.lang.SARL.Member");
@@ -5648,6 +5705,7 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 	private final EventMemberElements pEventMember;
 	private final CapacityMemberElements pCapacityMember;
 	private final AOPMemberElements pAOPMember;
+	private final InvariantConstraintElements pInvariantConstraint;
 	private final MemberElements pMember;
 	private final AnnotationFieldElements pAnnotationField;
 	private final ParameterElements pParameter;
@@ -5697,6 +5755,7 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEventMember = new EventMemberElements();
 		this.pCapacityMember = new CapacityMemberElements();
 		this.pAOPMember = new AOPMemberElements();
+		this.pInvariantConstraint = new InvariantConstraintElements();
 		this.pMember = new MemberElements();
 		this.pAnnotationField = new AnnotationFieldElements();
 		this.pParameter = new ParameterElements();
@@ -5869,7 +5928,8 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 	//	| modifiers+=FieldModifier
 	//	modifiers+=CommonModifier* (modifiers+='extension'
 	//	name=ValidID ':' type=JvmTypeReference
-	//	| name=ValidID (':' type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ';'?
+	//	| name=ValidID (':' type=JvmTypeReference)?)) ('=' initialValue=XExpression)? ('with' invariant=InvariantConstraint)?
+	//	';'?
 	//	| {SarlConstructor.annotationInfo=current} modifiers+=CommonModifier*
 	//	'new' ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? ('(' (parameters+=Parameter
 	//	(',' parameters+=Parameter)*)?
@@ -5905,6 +5965,16 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getAOPMemberRule() {
 		return getAOPMemberAccess().getRule();
+	}
+	
+	//InvariantConstraint:
+	//	'invariant' condition=XExpression ('named' name=ID)?;
+	public InvariantConstraintElements getInvariantConstraintAccess() {
+		return pInvariantConstraint;
+	}
+	
+	public ParserRule getInvariantConstraintRule() {
+		return getInvariantConstraintAccess().getRule();
 	}
 	
 	//@ Override Member xtend::XtendMember:

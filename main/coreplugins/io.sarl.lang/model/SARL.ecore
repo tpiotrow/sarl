@@ -252,4 +252,23 @@
         eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers
+	  xsi:type="ecore:EClass"
+	  name="SarlConstraint"
+	  abstract="true"
+	  eSuperTypes="../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression">
+  </eClassifiers>
+  <eClassifiers
+	  xsi:type="ecore:EClass"
+	  name="InvariantConstraint"
+	  eSuperTypes="#//SarlConstraint">
+	<eStructuralFeatures
+	  xsi:type="ecore:EAttribute"
+	  name="name"
+	  eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+	<eStructuralFeatures
+	  xsi:type="ecore:EReference"
+	  name="condition"
+	  eType="ecore:EClass ../../org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -1757,6 +1757,62 @@ public interface SarlPackage extends EPackage
 	 */
 	int SARL_FORMAL_PARAMETER_FEATURE_COUNT = XtendPackage.XTEND_PARAMETER_FEATURE_COUNT + 1;
 
+	/**
+	 * The meta object id for the '{@link io.sarl.lang.sarl.impl.SarlConstraintImpl <em>Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see io.sarl.lang.sarl.impl.SarlConstraintImpl
+	 * @see io.sarl.lang.sarl.impl.SarlPackageImpl#getSarlConstraint()
+	 * @generated
+	 */
+	int SARL_CONSTRAINT = 23;
+
+	/**
+	 * The number of structural features of the '<em>Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_CONSTRAINT_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link io.sarl.lang.sarl.impl.InvariantConstraintImpl <em>Invariant Constraint</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see io.sarl.lang.sarl.impl.InvariantConstraintImpl
+	 * @see io.sarl.lang.sarl.impl.SarlPackageImpl#getInvariantConstraint()
+	 * @generated
+	 */
+	int INVARIANT_CONSTRAINT = 24;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVARIANT_CONSTRAINT__NAME = SARL_CONSTRAINT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVARIANT_CONSTRAINT__CONDITION = SARL_CONSTRAINT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Invariant Constraint</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVARIANT_CONSTRAINT_FEATURE_COUNT = SARL_CONSTRAINT_FEATURE_COUNT + 2;
+
 
 	/**
 	 * Returns the meta object for class '{@link io.sarl.lang.sarl.SarlScript <em>Script</em>}'.
@@ -2187,6 +2243,48 @@ public interface SarlPackage extends EPackage
 	EReference getSarlFormalParameter_DefaultValue();
 
 	/**
+	 * Returns the meta object for class '{@link io.sarl.lang.sarl.SarlConstraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Constraint</em>'.
+	 * @see io.sarl.lang.sarl.SarlConstraint
+	 * @generated
+	 */
+	EClass getSarlConstraint();
+
+	/**
+	 * Returns the meta object for class '{@link io.sarl.lang.sarl.InvariantConstraint <em>Invariant Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Invariant Constraint</em>'.
+	 * @see io.sarl.lang.sarl.InvariantConstraint
+	 * @generated
+	 */
+	EClass getInvariantConstraint();
+
+	/**
+	 * Returns the meta object for the attribute '{@link io.sarl.lang.sarl.InvariantConstraint#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see io.sarl.lang.sarl.InvariantConstraint#getName()
+	 * @see #getInvariantConstraint()
+	 * @generated
+	 */
+	EAttribute getInvariantConstraint_Name();
+
+	/**
+	 * Returns the meta object for the reference '{@link io.sarl.lang.sarl.InvariantConstraint#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Condition</em>'.
+	 * @see io.sarl.lang.sarl.InvariantConstraint#getCondition()
+	 * @see #getInvariantConstraint()
+	 * @generated
+	 */
+	EReference getInvariantConstraint_Condition();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2582,6 +2680,42 @@ public interface SarlPackage extends EPackage
 		 * @generated
 		 */
 		EReference SARL_FORMAL_PARAMETER__DEFAULT_VALUE = eINSTANCE.getSarlFormalParameter_DefaultValue();
+
+		/**
+		 * The meta object literal for the '{@link io.sarl.lang.sarl.impl.SarlConstraintImpl <em>Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see io.sarl.lang.sarl.impl.SarlConstraintImpl
+		 * @see io.sarl.lang.sarl.impl.SarlPackageImpl#getSarlConstraint()
+		 * @generated
+		 */
+		EClass SARL_CONSTRAINT = eINSTANCE.getSarlConstraint();
+
+		/**
+		 * The meta object literal for the '{@link io.sarl.lang.sarl.impl.InvariantConstraintImpl <em>Invariant Constraint</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see io.sarl.lang.sarl.impl.InvariantConstraintImpl
+		 * @see io.sarl.lang.sarl.impl.SarlPackageImpl#getInvariantConstraint()
+		 * @generated
+		 */
+		EClass INVARIANT_CONSTRAINT = eINSTANCE.getInvariantConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INVARIANT_CONSTRAINT__NAME = eINSTANCE.getInvariantConstraint_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INVARIANT_CONSTRAINT__CONDITION = eINSTANCE.getInvariantConstraint_Condition();
 
 	}
 

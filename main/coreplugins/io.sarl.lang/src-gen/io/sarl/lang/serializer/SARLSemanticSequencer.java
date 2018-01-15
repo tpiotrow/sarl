@@ -24,6 +24,7 @@
 package io.sarl.lang.serializer;
 
 import com.google.inject.Inject;
+import io.sarl.lang.sarl.InvariantConstraint;
 import io.sarl.lang.sarl.SarlAction;
 import io.sarl.lang.sarl.SarlAgent;
 import io.sarl.lang.sarl.SarlAnnotationType;
@@ -133,6 +134,9 @@ public class SARLSemanticSequencer extends XtendSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == SarlPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case SarlPackage.INVARIANT_CONSTRAINT:
+				sequence_InvariantConstraint(context, (InvariantConstraint) semanticObject); 
+				return; 
 			case SarlPackage.SARL_ACTION:
 				if (rule == grammarAccess.getAOPMemberRule()) {
 					sequence_AOPMember(context, (SarlAction) semanticObject); 
@@ -1006,7 +1010,8 @@ public class SARLSemanticSequencer extends XtendSemanticSequencer {
 	 *                 ((modifiers+='extension' name=ValidID type=JvmTypeReference) | (name=ValidID type=JvmTypeReference?))
 	 *             )
 	 *         ) 
-	 *         initialValue=XExpression?
+	 *         initialValue=XExpression? 
+	 *         invariant=InvariantConstraint?
 	 *     )
 	 */
 	protected void sequence_AOPMember(ISerializationContext context, SarlField semanticObject) {
@@ -1421,6 +1426,18 @@ public class SARLSemanticSequencer extends XtendSemanticSequencer {
 	 *     (extension?='extension'? name=ValidID parameterType=JvmTypeReference)
 	 */
 	protected void sequence_FullJvmFormalParameter(ISerializationContext context, XtendFormalParameter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InvariantConstraint returns InvariantConstraint
+	 *
+	 * Constraint:
+	 *     (condition=XExpression name=ID?)
+	 */
+	protected void sequence_InvariantConstraint(ISerializationContext context, InvariantConstraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

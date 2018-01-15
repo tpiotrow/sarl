@@ -207,6 +207,16 @@ public class SarlAdapterFactory extends AdapterFactoryImpl
 				return createSarlFormalParameterAdapter();
 			}
 			@Override
+			public Adapter caseSarlConstraint(SarlConstraint object)
+			{
+				return createSarlConstraintAdapter();
+			}
+			@Override
+			public Adapter caseInvariantConstraint(InvariantConstraint object)
+			{
+				return createInvariantConstraintAdapter();
+			}
+			@Override
 			public Adapter caseXtendFile(XtendFile object)
 			{
 				return createXtendFileAdapter();
@@ -644,6 +654,36 @@ public class SarlAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createSarlFormalParameterAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link io.sarl.lang.sarl.SarlConstraint <em>Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see io.sarl.lang.sarl.SarlConstraint
+	 * @generated
+	 */
+	public Adapter createSarlConstraintAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link io.sarl.lang.sarl.InvariantConstraint <em>Invariant Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see io.sarl.lang.sarl.InvariantConstraint
+	 * @generated
+	 */
+	public Adapter createInvariantConstraintAdapter()
 	{
 		return null;
 	}

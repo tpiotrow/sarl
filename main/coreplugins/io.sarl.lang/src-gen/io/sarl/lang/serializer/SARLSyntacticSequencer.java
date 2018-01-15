@@ -43,7 +43,7 @@ public class SARLSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected SARLGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_AOPMember_SemicolonKeyword_2_1_4_q;
 	protected AbstractElementAlias match_AOPMember_SemicolonKeyword_2_2_4_q;
-	protected AbstractElementAlias match_AOPMember_SemicolonKeyword_2_3_4_q;
+	protected AbstractElementAlias match_AOPMember_SemicolonKeyword_2_3_5_q;
 	protected AbstractElementAlias match_AOPMember_SemicolonKeyword_2_5_9_1_q;
 	protected AbstractElementAlias match_AOPMember_SemicolonKeyword_2_8_6_q;
 	protected AbstractElementAlias match_AOPMember___LeftParenthesisKeyword_2_4_4_0_RightParenthesisKeyword_2_4_4_2__q;
@@ -76,7 +76,7 @@ public class SARLSyntacticSequencer extends AbstractSyntacticSequencer {
 		grammarAccess = (SARLGrammarAccess) access;
 		match_AOPMember_SemicolonKeyword_2_1_4_q = new TokenAlias(false, true, grammarAccess.getAOPMemberAccess().getSemicolonKeyword_2_1_4());
 		match_AOPMember_SemicolonKeyword_2_2_4_q = new TokenAlias(false, true, grammarAccess.getAOPMemberAccess().getSemicolonKeyword_2_2_4());
-		match_AOPMember_SemicolonKeyword_2_3_4_q = new TokenAlias(false, true, grammarAccess.getAOPMemberAccess().getSemicolonKeyword_2_3_4());
+		match_AOPMember_SemicolonKeyword_2_3_5_q = new TokenAlias(false, true, grammarAccess.getAOPMemberAccess().getSemicolonKeyword_2_3_5());
 		match_AOPMember_SemicolonKeyword_2_5_9_1_q = new TokenAlias(false, true, grammarAccess.getAOPMemberAccess().getSemicolonKeyword_2_5_9_1());
 		match_AOPMember_SemicolonKeyword_2_8_6_q = new TokenAlias(false, true, grammarAccess.getAOPMemberAccess().getSemicolonKeyword_2_8_6());
 		match_AOPMember___LeftParenthesisKeyword_2_4_4_0_RightParenthesisKeyword_2_4_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getAOPMemberAccess().getLeftParenthesisKeyword_2_4_4_0()), new TokenAlias(false, false, grammarAccess.getAOPMemberAccess().getRightParenthesisKeyword_2_4_4_2()));
@@ -146,8 +146,8 @@ public class SARLSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_AOPMember_SemicolonKeyword_2_1_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_AOPMember_SemicolonKeyword_2_2_4_q.equals(syntax))
 				emit_AOPMember_SemicolonKeyword_2_2_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_AOPMember_SemicolonKeyword_2_3_4_q.equals(syntax))
-				emit_AOPMember_SemicolonKeyword_2_3_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_AOPMember_SemicolonKeyword_2_3_5_q.equals(syntax))
+				emit_AOPMember_SemicolonKeyword_2_3_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_AOPMember_SemicolonKeyword_2_5_9_1_q.equals(syntax))
 				emit_AOPMember_SemicolonKeyword_2_5_9_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_AOPMember_SemicolonKeyword_2_8_6_q.equals(syntax))
@@ -232,10 +232,11 @@ public class SARLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     initialValue=XExpression (ambiguity) (rule end)
+	 *     invariant=InvariantConstraint (ambiguity) (rule end)
 	 *     name=ValidID (ambiguity) (rule end)
 	 *     type=JvmTypeReference (ambiguity) (rule end)
 	 */
-	protected void emit_AOPMember_SemicolonKeyword_2_3_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_AOPMember_SemicolonKeyword_2_3_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
