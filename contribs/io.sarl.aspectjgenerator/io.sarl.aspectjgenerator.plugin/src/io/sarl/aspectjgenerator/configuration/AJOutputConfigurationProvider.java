@@ -56,7 +56,7 @@ public class AJOutputConfigurationProvider implements IOutputConfigurationProvid
 	@Override
 	public Set<OutputConfiguration> getOutputConfigurations() {
 		final OutputConfiguration sclOutput = new OutputConfiguration(OUTPUT_CONFIGURATION_NAME);
-		sclOutput.setDescription(Messages.SCLOutputConfigurationProvider_0);
+		sclOutput.setDescription(Messages.AJOutputConfigurationProvider_0);
 		sclOutput.setOutputDirectory(OUTPUT_FOLDER);
 		sclOutput.setOverrideExistingResources(true);
 		sclOutput.setCreateOutputDirectory(true);

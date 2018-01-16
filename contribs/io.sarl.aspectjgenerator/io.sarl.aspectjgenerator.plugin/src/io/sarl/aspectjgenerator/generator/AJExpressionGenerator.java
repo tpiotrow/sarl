@@ -101,7 +101,7 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 				it.append(" != "); //$NON-NLS-1$
 				break;
 			default:
-				throw new IllegalArgumentException(MessageFormat.format(Messages.SCLExpressionGenerator_0, operator));
+				throw new IllegalArgumentException(MessageFormat.format(Messages.AJExpressionGenerator_0, operator));
 			}
 			generate(operation.getRightOperand(), it, context);
 		}

@@ -33,8 +33,10 @@ import io.sarl.lang.sarl.SarlAgent;
 import io.sarl.lang.sarl.SarlField;
 
 /** The generator from SARL to AspectJ language.
- * Note than since we only want to translate constraints and nothing else,
- * we don't translate all SARL constructs.
+ *
+ * <p>Note: we only translate constraints so
+ * we ignore irrelevant SARL constructs.</p>
+ *
  * @author $Author: tpiotrow$
  * @author $Author: sgalland$
  * @version $FullVersion$

@@ -36,9 +36,9 @@ public final class Messages extends NLS {
 
 	private static final String BUNDLE_NAME = Messages.class.getPackage().getName() + ".messages";
 
-	public static String SCLOutputConfigurationProvider_0;
+	public static String AJOutputConfigurationProvider_0;
 
-	public static String SCLExpressionGenerator_0;
+	public static String AJExpressionGenerator_0;
 
 	static {
 		// Initialize resource bundle

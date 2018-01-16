@@ -35,15 +35,15 @@ public final class Messages extends NLS {
 
 	private static final String BUNDLE_NAME = Messages.class.getPackage().getName() + ".messages";
 
-	public static String SCLValidator;
+	public static String AJValidator;
 
-	public static String SCLValidator_1;
+	public static String AJValidator_1;
 
-	public static String SCLValidator_2;
+	public static String AJValidator_2;
 
-	public static String SCLValidator_3;
+	public static String AJValidator_3;
 
-	public static String SCLValidator_4;
+	public static String AJValidator_4;
 
 	static {
 		// initialize resource bundle

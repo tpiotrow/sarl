@@ -34,11 +34,11 @@ import io.sarl.lang.ui.validation.extra.AbstractExtraLanguageValidatorProvider;
  * @mavengroupid $GroupId$
  * @mavenartifactid $ArtifactId$
  */
-public class SCLValidatorProvider extends AbstractExtraLanguageValidatorProvider<SCLValidator> {
+public class AJValidatorProvider extends AbstractExtraLanguageValidatorProvider<AJValidator> {
 
 	@Override
-	protected SCLValidator createValidatorInstance(Injector injector) {
-		return injector.getInstance(SCLValidator.class);
+	protected AJValidator createValidatorInstance(Injector injector) {
+		return injector.getInstance(AJValidator.class);
 	}
 
 	@Override

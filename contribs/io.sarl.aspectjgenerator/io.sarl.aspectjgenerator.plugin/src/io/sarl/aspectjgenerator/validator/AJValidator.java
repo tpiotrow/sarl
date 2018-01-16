@@ -34,11 +34,11 @@ import io.sarl.lang.validation.extra.AbstractExtraLanguageValidator;
  * @mavengroupid $GroupId$
  * @mavenartifactid $ArtifactId$
  */
-public class SCLValidator extends AbstractExtraLanguageValidator {
+public class AJValidator extends AbstractExtraLanguageValidator {
 
 	@Override
 	protected String getErrorMessageFormat() {
-		return Messages.SCLValidator_4;
+		return Messages.AJValidator_4;
 	}
 
 	@Override

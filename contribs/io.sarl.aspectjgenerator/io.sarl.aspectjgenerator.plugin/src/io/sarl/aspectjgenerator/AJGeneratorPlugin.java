@@ -41,7 +41,7 @@ public class AJGeneratorPlugin extends AbstractUIPlugin {
 
 	/** Identifier of the plugin.
 	 */
-	public static final String PLUGIN_ID = "io.sarl.scl.plugin"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "io.sarl.aspectjgenerator.plugin"; //$NON-NLS-1$
 
 	private static AJGeneratorPlugin instance;
 
