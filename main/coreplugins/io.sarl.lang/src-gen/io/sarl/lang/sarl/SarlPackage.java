@@ -180,13 +180,22 @@ public interface SarlPackage extends EPackage
 	int SARL_FIELD__INITIAL_VALUE = XtendPackage.XTEND_FIELD__INITIAL_VALUE;
 
 	/**
+	 * The feature id for the '<em><b>Invariant</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_FIELD__INVARIANT = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Field</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SARL_FIELD_FEATURE_COUNT = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 0;
+	int SARL_FIELD_FEATURE_COUNT = XtendPackage.XTEND_FIELD_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link io.sarl.lang.sarl.impl.SarlBreakExpressionImpl <em>Break Expression</em>}' class.
@@ -1835,6 +1844,17 @@ public interface SarlPackage extends EPackage
 	EClass getSarlField();
 
 	/**
+	 * Returns the meta object for the reference '{@link io.sarl.lang.sarl.SarlField#getInvariant <em>Invariant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Invariant</em>'.
+	 * @see io.sarl.lang.sarl.SarlField#getInvariant()
+	 * @see #getSarlField()
+	 * @generated
+	 */
+	EReference getSarlField_Invariant();
+
+	/**
 	 * Returns the meta object for class '{@link io.sarl.lang.sarl.SarlBreakExpression <em>Break Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2326,6 +2346,14 @@ public interface SarlPackage extends EPackage
 		 * @generated
 		 */
 		EClass SARL_FIELD = eINSTANCE.getSarlField();
+
+		/**
+		 * The meta object literal for the '<em><b>Invariant</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SARL_FIELD__INVARIANT = eINSTANCE.getSarlField_Invariant();
 
 		/**
 		 * The meta object literal for the '{@link io.sarl.lang.sarl.impl.SarlBreakExpressionImpl <em>Break Expression</em>}' class.

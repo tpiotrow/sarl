@@ -51,7 +51,7 @@ public class AJOutputConfigurationProvider implements IOutputConfigurationProvid
 
 	/** Name of the output folder in which the AspectJ files are generated.
 	 */
-	public static final String OUTPUT_FOLDER = "target/generated-sources/aspectj"; //$NON-NLS-1$
+	public static final String OUTPUT_FOLDER = "src/main/generated-sources/sarl"; //$NON-NLS-1$
 
 	@Override
 	public Set<OutputConfiguration> getOutputConfigurations() {

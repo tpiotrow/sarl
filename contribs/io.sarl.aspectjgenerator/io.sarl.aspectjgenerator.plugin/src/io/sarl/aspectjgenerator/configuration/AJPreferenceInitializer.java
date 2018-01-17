@@ -26,8 +26,6 @@ import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreAccess;
 import org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreInitializer;
 
 import io.sarl.aspectjgenerator.AJGeneratorPlugin;
-import io.sarl.aspectjgenerator.generator.AJInitializers;
-import io.sarl.lang.compiler.extra.IExtraLanguageConversionInitializer;
 import io.sarl.lang.ui.compiler.extra.preferences.ExtraLanguagePreferenceAccess;
 
 
@@ -45,29 +43,29 @@ public class AJPreferenceInitializer implements IPreferenceStoreInitializer {
 	public void initialize(IPreferenceStoreAccess access) {
 		final IPreferenceStore store = access.getWritablePreferenceStore();
 		initializeEnable(store);
-		initializeTypeConversion(store);
-		initializeFeatureNameConversion(store);
+		//initializeTypeConversion(store);
+		//initializeFeatureNameConversion(store);
 	}
 
 	private static void initializeEnable(IPreferenceStore store) {
 		final String key = ExtraLanguagePreferenceAccess.getPrefixedKey(AJGeneratorPlugin.PLUGIN_ID,
 				ExtraLanguagePreferenceAccess.ENABLED_PROPERTY);
-		store.setDefault(key, false);
+		store.setDefault(key, true);
 	}
 
-	private static void initializeTypeConversion(IPreferenceStore store) {
-		final IExtraLanguageConversionInitializer tcInitializer = AJInitializers.getTypeConverterInitializer();
-		final String preferenceValue = ExtraLanguagePreferenceAccess.toConverterPreferenceValue(tcInitializer);
-		final String key = ExtraLanguagePreferenceAccess.getPrefixedKey(AJGeneratorPlugin.PLUGIN_ID,
-				ExtraLanguagePreferenceAccess.TYPE_CONVERSION_PROPERTY);
-		store.setDefault(key, preferenceValue);
-	}
+	//private static void initializeTypeConversion(IPreferenceStore store) {
+	//	final IExtraLanguageConversionInitializer tcInitializer = AJInitializers.getTypeConverterInitializer();
+	//	final String preferenceValue = ExtraLanguagePreferenceAccess.toConverterPreferenceValue(tcInitializer);
+	//	final String key = ExtraLanguagePreferenceAccess.getPrefixedKey(AJGeneratorPlugin.PLUGIN_ID,
+	//			ExtraLanguagePreferenceAccess.TYPE_CONVERSION_PROPERTY);
+	//	store.setDefault(key, preferenceValue);
+	//}
 
-	private static void initializeFeatureNameConversion(IPreferenceStore store) {
-		final IExtraLanguageConversionInitializer fnInitializer = AJInitializers.getFeatureNameConverterInitializer();
-		final String preferenceValue = ExtraLanguagePreferenceAccess.toConverterPreferenceValue(fnInitializer);
-		final String key = ExtraLanguagePreferenceAccess.getPrefixedKey(AJGeneratorPlugin.PLUGIN_ID,
-				ExtraLanguagePreferenceAccess.FEATURE_NAME_CONVERSION_PROPERTY);
-		store.setDefault(key, preferenceValue);
-	}
+	//private static void initializeFeatureNameConversion(IPreferenceStore store) {
+	//	final IExtraLanguageConversionInitializer fnInitializer = AJInitializers.getFeatureNameConverterInitializer();
+	//	final String preferenceValue = ExtraLanguagePreferenceAccess.toConverterPreferenceValue(fnInitializer);
+	//	final String key = ExtraLanguagePreferenceAccess.getPrefixedKey(AJGeneratorPlugin.PLUGIN_ID,
+	//			ExtraLanguagePreferenceAccess.FEATURE_NAME_CONVERSION_PROPERTY);
+	//	store.setDefault(key, preferenceValue);
+	//}
 }

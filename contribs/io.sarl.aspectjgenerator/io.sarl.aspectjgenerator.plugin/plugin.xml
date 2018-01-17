@@ -4,10 +4,10 @@
    <extension
          point="io.sarl.lang.ui.extraGenerators">
       <extraGenerator
-            configuration="io.sarl.aspectjgenerator.AJExecutableExtensionFactory:io.sarl.aspectjgenerator.AJOutputConfigurationProvider"
+            configuration="io.sarl.aspectjgenerator.AJExecutableExtensionFactory:io.sarl.aspectjgenerator.configuration.AJOutputConfigurationProvider"
             generator="io.sarl.aspectjgenerator.AJExecutableExtensionFactory:io.sarl.aspectjgenerator.generator.AJGeneratorProvider"
             validator="io.sarl.aspectjgenerator.AJExecutableExtensionFactory:io.sarl.aspectjgenerator.validator.AJValidatorProvider"
-            preferences="io.sarl.aspectjgenerator.AJExecutableExtensionFactory:io.sarl.aspectjgenerator.validator.AJPreferenceInitializer">
+            preferences="io.sarl.aspectjgenerator.AJExecutableExtensionFactory:io.sarl.aspectjgenerator.configuration.AJPreferenceInitializer">
       </extraGenerator>
    </extension>
 

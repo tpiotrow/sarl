@@ -4754,9 +4754,9 @@ ruleInvariantConstraint returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_2='named'
+			otherlv_2='as'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getInvariantConstraintAccess().getNamedKeyword_2_0());
+				newLeafNode(otherlv_2, grammarAccess.getInvariantConstraintAccess().getAsKeyword_2_0());
 			}
 			(
 				(

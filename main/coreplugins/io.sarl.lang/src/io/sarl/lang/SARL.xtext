@@ -278,7 +278,7 @@ AOPMember returns xtend::XtendMember:
 ;
 
 InvariantConstraint:
-	'invariant' condition=XExpression ('named' name=ID)?
+	'invariant' condition=XExpression ('as' name=ID)?
 ;
 
 // Members for the object-oriented types

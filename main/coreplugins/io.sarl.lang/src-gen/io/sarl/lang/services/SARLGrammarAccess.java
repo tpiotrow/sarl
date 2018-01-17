@@ -2985,15 +2985,15 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cConditionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cConditionXExpressionParserRuleCall_1_0 = (RuleCall)cConditionAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cNamedKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cAsKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cNameAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_2_1_0 = (RuleCall)cNameAssignment_2_1.eContents().get(0);
 		
 		//InvariantConstraint:
-		//	'invariant' condition=XExpression ('named' name=ID)?;
+		//	'invariant' condition=XExpression ('as' name=ID)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'invariant' condition=XExpression ('named' name=ID)?
+		//'invariant' condition=XExpression ('as' name=ID)?
 		public Group getGroup() { return cGroup; }
 		
 		//'invariant'
@@ -3005,11 +3005,11 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//XExpression
 		public RuleCall getConditionXExpressionParserRuleCall_1_0() { return cConditionXExpressionParserRuleCall_1_0; }
 		
-		//('named' name=ID)?
+		//('as' name=ID)?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//'named'
-		public Keyword getNamedKeyword_2_0() { return cNamedKeyword_2_0; }
+		//'as'
+		public Keyword getAsKeyword_2_0() { return cAsKeyword_2_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_2_1() { return cNameAssignment_2_1; }
@@ -5968,7 +5968,7 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//InvariantConstraint:
-	//	'invariant' condition=XExpression ('named' name=ID)?;
+	//	'invariant' condition=XExpression ('as' name=ID)?;
 	public InvariantConstraintElements getInvariantConstraintAccess() {
 		return pInvariantConstraint;
 	}

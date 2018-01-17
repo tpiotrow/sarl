@@ -22,7 +22,6 @@
 package io.sarl.aspectjgenerator.validator;
 
 import io.sarl.aspectjgenerator.AJGeneratorPlugin;
-import io.sarl.aspectjgenerator.generator.AJInitializers;
 import io.sarl.lang.compiler.extra.IExtraLanguageConversionInitializer;
 import io.sarl.lang.validation.extra.AbstractExtraLanguageValidator;
 
@@ -43,12 +42,14 @@ public class AJValidator extends AbstractExtraLanguageValidator {
 
 	@Override
 	protected IExtraLanguageConversionInitializer getTypeConverterInitializer() {
-		return AJInitializers.getTypeConverterInitializer();
+		//return AJInitializers.getTypeConverterInitializer();
+		return null;
 	}
 
 	@Override
 	protected IExtraLanguageConversionInitializer getFeatureConverterInitializer() {
-		return AJInitializers.getFeatureNameConverterInitializer();
+		//return AJInitializers.getFeatureNameConverterInitializer();
+		return null;
 	}
 
 	@Override

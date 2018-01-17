@@ -325,6 +325,16 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSarlField_Invariant()
+	{
+		return (EReference)sarlFieldEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSarlBreakExpression()
 	{
 		return sarlBreakExpressionEClass;
@@ -783,6 +793,7 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 		sarlScriptEClass = createEClass(SARL_SCRIPT);
 
 		sarlFieldEClass = createEClass(SARL_FIELD);
+		createEReference(sarlFieldEClass, SARL_FIELD__INVARIANT);
 
 		sarlBreakExpressionEClass = createEClass(SARL_BREAK_EXPRESSION);
 
@@ -915,6 +926,7 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 		initEClass(sarlScriptEClass, SarlScript.class, "SarlScript", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sarlFieldEClass, SarlField.class, "SarlField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSarlField_Invariant(), this.getInvariantConstraint(), null, "invariant", null, 0, 1, SarlField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sarlBreakExpressionEClass, SarlBreakExpression.class, "SarlBreakExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

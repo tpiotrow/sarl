@@ -648,7 +648,7 @@ ruleInvariantConstraint:
 	'invariant'
 	ruleXExpression
 	(
-		'named'
+		'as'
 		RULE_ID
 	)?
 ;

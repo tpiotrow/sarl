@@ -15,7 +15,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SARL.ecore#//SarlAssertExpression/isStatic"/>
     </genClasses>
     <genClasses ecoreClass="SARL.ecore#//SarlScript"/>
-    <genClasses ecoreClass="SARL.ecore#//SarlField"/>
+    <genClasses ecoreClass="SARL.ecore#//SarlField">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SARL.ecore#//SarlConstraint/invariant"/>
+    </genClasses>
     <genClasses ecoreClass="SARL.ecore#//SarlAction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SARL.ecore#//SarlAction/firedEvents"/>
     </genClasses>
@@ -72,8 +74,8 @@
     </genClasses>
     <genClasses ecoreClass="SARL.ecore#//SarlConstraint"/>
     <genClasses ecoreClass="SARL.ecore#//InvariantConstraint">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SARL.ecore#//InvariantConstraint/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SARL.ecore#//InvariantConstraint/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute SARL.ecore#//InvariantConstraint/as"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SARL.ecore#//InvariantConstraint/condition"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

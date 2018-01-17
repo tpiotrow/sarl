@@ -17019,9 +17019,9 @@ rule__InvariantConstraint__Group_2__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getInvariantConstraintAccess().getNamedKeyword_2_0()); }
-	'named'
-	{ after(grammarAccess.getInvariantConstraintAccess().getNamedKeyword_2_0()); }
+	{ before(grammarAccess.getInvariantConstraintAccess().getAsKeyword_2_0()); }
+	'as'
+	{ after(grammarAccess.getInvariantConstraintAccess().getAsKeyword_2_0()); }
 )
 ;
 finally {

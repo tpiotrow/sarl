@@ -108,11 +108,11 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		// generate(member.getInvariant().getCondition(), it, context);
 		it.append(") ) {"); //$NON-NLS-1$
 		it.newLine().increaseIndentation();
-		it.append("logger.log(\"Invariant broken with value: \" + newValue)"); //$NON-NLS-1$
-		it.newLine().decreaseIndentation();
+		it.append("logger.log(\"Invariant broken with value: \" + newValue);"); //$NON-NLS-1$
+		it.decreaseIndentation().newLine();
 		it.append("}"); //$NON-NLS-1$ // If statement closed
 
-		it.newLine().decreaseIndentation();
+		it.decreaseIndentation().newLine();
 		it.append("}"); //$NON-NLS-1$ // Advice closed
 	}
 
@@ -129,9 +129,11 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		appendable.newLine().increaseIndentation();
 		for (final XtendMember member : agent.getMembers()) {
 			if (member instanceof SarlField) {
-				appendable.newLine();
 				final SarlField field = (SarlField) member;
-				generateBeforeAdvice(field, agent.getName(), appendable, context);
+				if (field.getInvariant() != null) {
+					appendable.newLine();
+					generateBeforeAdvice(field, agent.getName(), appendable, context);
+				}
 			}
 		}
 		appendable.decreaseIndentation().append("}"); //$NON-NLS-1$
