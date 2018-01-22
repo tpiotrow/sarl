@@ -43,8 +43,6 @@ public class AJPreferenceInitializer implements IPreferenceStoreInitializer {
 	public void initialize(IPreferenceStoreAccess access) {
 		final IPreferenceStore store = access.getWritablePreferenceStore();
 		initializeEnable(store);
-		//initializeTypeConversion(store);
-		//initializeFeatureNameConversion(store);
 	}
 
 	private static void initializeEnable(IPreferenceStore store) {
@@ -53,19 +51,4 @@ public class AJPreferenceInitializer implements IPreferenceStoreInitializer {
 		store.setDefault(key, true);
 	}
 
-	//private static void initializeTypeConversion(IPreferenceStore store) {
-	//	final IExtraLanguageConversionInitializer tcInitializer = AJInitializers.getTypeConverterInitializer();
-	//	final String preferenceValue = ExtraLanguagePreferenceAccess.toConverterPreferenceValue(tcInitializer);
-	//	final String key = ExtraLanguagePreferenceAccess.getPrefixedKey(AJGeneratorPlugin.PLUGIN_ID,
-	//			ExtraLanguagePreferenceAccess.TYPE_CONVERSION_PROPERTY);
-	//	store.setDefault(key, preferenceValue);
-	//}
-
-	//private static void initializeFeatureNameConversion(IPreferenceStore store) {
-	//	final IExtraLanguageConversionInitializer fnInitializer = AJInitializers.getFeatureNameConverterInitializer();
-	//	final String preferenceValue = ExtraLanguagePreferenceAccess.toConverterPreferenceValue(fnInitializer);
-	//	final String key = ExtraLanguagePreferenceAccess.getPrefixedKey(AJGeneratorPlugin.PLUGIN_ID,
-	//			ExtraLanguagePreferenceAccess.FEATURE_NAME_CONVERSION_PROPERTY);
-	//	store.setDefault(key, preferenceValue);
-	//}
 }

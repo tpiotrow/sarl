@@ -23,6 +23,7 @@ package io.sarl.aspectjgenerator.generator;
 
 import com.google.inject.Inject;
 import org.eclipse.xtend.core.xtend.XtendMember;
+import org.eclipse.xtext.naming.QualifiedName;
 
 import io.sarl.aspectjgenerator.AJGeneratorPlugin;
 import io.sarl.aspectjgenerator.configuration.AJOutputConfigurationProvider;
@@ -101,13 +102,13 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		it.append("."); //$NON-NLS-1$
 		it.append(member.getName());
 		it.append(") && args(newValue) {"); //$NON-NLS-1$
-		it.newLine().increaseIndentation();
+		it.increaseIndentation().newLine();
 
 		// Before advice body
 		it.append("if ( !("); //$NON-NLS-1$
-		// generate(member.getInvariant().getCondition(), it, context);
+		//generate(member.getInvariant().getCondition(), it, context);
 		it.append(") ) {"); //$NON-NLS-1$
-		it.newLine().increaseIndentation();
+		it.increaseIndentation().newLine();
 		it.append("logger.log(\"Invariant broken with value: \" + newValue);"); //$NON-NLS-1$
 		it.decreaseIndentation().newLine();
 		it.append("}"); //$NON-NLS-1$ // If statement closed
@@ -126,17 +127,22 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		appendable.append("public privileged aspect "); //$NON-NLS-1$
 		appendable.append(agent.getName());
 		appendable.append("Aspect {"); //$NON-NLS-1$
-		appendable.newLine().increaseIndentation();
+		appendable.increaseIndentation().newLine();
+
+		// TODO : create a logger with the agent name
+
 		for (final XtendMember member : agent.getMembers()) {
 			if (member instanceof SarlField) {
 				final SarlField field = (SarlField) member;
 				if (field.getInvariant() != null) {
-					appendable.newLine();
 					generateBeforeAdvice(field, agent.getName(), appendable, context);
+					appendable.newLine().newLine();
 				}
 			}
 		}
-		appendable.decreaseIndentation().append("}"); //$NON-NLS-1$
+		appendable.decreaseIndentation().newLine().append("}"); //$NON-NLS-1$
+		final QualifiedName name = getQualifiedNameProvider().getFullyQualifiedName(agent);
+		writeFile(name, appendable, context);
 	}
 
 }
