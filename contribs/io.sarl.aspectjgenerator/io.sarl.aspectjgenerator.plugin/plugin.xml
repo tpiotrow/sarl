@@ -24,8 +24,8 @@
 	       point="org.eclipse.ui.propertyPages">
 	    <page
            category="io.sarl.lang.SARL.compiler.propertyPage"
-           class="io.sarl.aspectjgenerator.AJExecutableExtensionFactory:io.sarl.lang.scl.ui.PropertyPage"
-           id="io.sarl.lang.scl.eclipse.propertyPage"
+           class="io.sarl.aspectjgenerator.AJExecutableExtensionFactory:io.sarl.aspectjgenerator.ui.PropertyPage"
+           id="io.sarl.aspectjgenerator.eclipse.propertyPage"
            name="%preference.page">
 	        <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
