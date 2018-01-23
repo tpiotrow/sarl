@@ -106,8 +106,7 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 
 		// Before advice body
 		it.append("if ( !("); //$NON-NLS-1$
-		//generate(member.getInvariant().getCondition(), it, context);
-		it.append("false"); //$NON-NLS-1$
+		getExpressionGenerator().generate(member.getInvariant().getCondition(), it, context);
 		it.append(") ) {"); //$NON-NLS-1$
 		it.increaseIndentation().newLine();
 		it.append("Logger.getLogger(" + agentName +  ").log(\"Invariant broken with value: \" + newValue);"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -134,8 +133,9 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 			if (member instanceof SarlField) {
 				final SarlField field = (SarlField) member;
 				if (field.getInvariant() != null) {
+					appendable.newLine();
 					generateBeforeAdvice(field, agent.getName(), appendable, context);
-					appendable.newLine().newLine();
+					appendable.newLine();
 				}
 			}
 		}

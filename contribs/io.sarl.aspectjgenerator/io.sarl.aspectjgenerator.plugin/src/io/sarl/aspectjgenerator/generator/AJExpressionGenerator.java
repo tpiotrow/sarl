@@ -29,13 +29,16 @@ import org.eclipse.xtext.xbase.XBooleanLiteral;
 import org.eclipse.xtext.xbase.XCastedExpression;
 import org.eclipse.xtext.xbase.XCatchClause;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XInstanceOfExpression;
+import org.eclipse.xtext.xbase.XMemberFeatureCall;
 import org.eclipse.xtext.xbase.XNullLiteral;
 import org.eclipse.xtext.xbase.XNumberLiteral;
 import org.eclipse.xtext.xbase.XStringLiteral;
 import org.eclipse.xtext.xbase.XThrowExpression;
 import org.eclipse.xtext.xbase.XTryCatchFinallyExpression;
 import org.eclipse.xtext.xbase.XTypeLiteral;
+import org.eclipse.xtext.xbase.XUnaryOperation;
 import org.eclipse.xtext.xbase.compiler.IAppendable;
 
 import io.sarl.aspectjgenerator.AJGeneratorPlugin;
@@ -57,6 +60,32 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 	@Override
 	protected String getGeneratorPluginID() {
 		return AJGeneratorPlugin.PLUGIN_ID;
+	}
+
+	/** Generate the given object.
+	 * @param expr the xexpression we don't know how to handle it.
+	 * @param it the target for the generated content.
+	 * @param context the context.
+	 * @return the operation.
+	 */
+	protected XExpression _generate(XExpression expr, IAppendable it, IExtraLanguageGeneratorContext context) {
+		System.out.println("unknown xExpression : " + expr.toString()); //$NON-NLS-1$
+		return expr;
+	}
+
+	/** Generate the given object.
+	 * @param operation the unary operation.
+	 * @param it the target for the generated content.
+	 * @param context the context.
+	 * @return the operation.
+	 */
+	protected XExpression _generate(XUnaryOperation operation, IAppendable it, IExtraLanguageGeneratorContext context) {
+		final String operator = getOperatorSymbol(operation);
+		if (operator != null) {
+			it.append(operator);
+			generate(operation.getOperand(), it, context);
+		}
+		return operation;
 	}
 
 	/** Generate the given object.
@@ -246,4 +275,42 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 		it.append(literal.getType());
 		return literal;
 	}
+
+	/** Generate the given object.
+	 *
+	 * @param featureCall the feature call.
+	 * @param it the target for the generated content.
+	 * @param context the context.
+	 * @return the literal.
+	 */
+	@SuppressWarnings("static-method")
+	protected XExpression _generate(XFeatureCall featureCall, IAppendable it, IExtraLanguageGeneratorContext context) {
+		it.append(featureCall.toString());
+		//it.append(featureCall.getFeature().getQualifiedName());
+		return featureCall;
+	}
+
+	/** Generate the given object.
+	 *
+	 * @param featureCall the feature call.
+	 * @param it the target for the generated content.
+	 * @param context the context.
+	 * @return the literal.
+	 */
+	protected XExpression _generate(XMemberFeatureCall featureCall, IAppendable it, IExtraLanguageGeneratorContext context) {
+		generate(featureCall.getMemberCallTarget(), it, context);
+		it.append(featureCall.isExplicitStatic() ? "::" : "."); //$NON-NLS-1$ //$NON-NLS-2$
+		it.append(featureCall.getConcreteSyntaxFeatureName());
+		//it.append(featureCall.getMemberCallArguments());	// FOR LOOP
+		it.append("("); //$NON-NLS-1$
+		for (int i = 0; i < featureCall.getMemberCallArguments().size(); i++) {
+			generate(featureCall.getMemberCallArguments().get(i), it, context);
+			if (i != featureCall.getMemberCallArguments().size() - 1) {
+				it.append(", "); //$NON-NLS-1$
+			}
+		}
+		it.append(")"); //$NON-NLS-1$
+		return featureCall;
+	}
+
 }
