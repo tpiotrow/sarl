@@ -107,9 +107,10 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		// Before advice body
 		it.append("if ( !("); //$NON-NLS-1$
 		//generate(member.getInvariant().getCondition(), it, context);
+		it.append("false"); //$NON-NLS-1$
 		it.append(") ) {"); //$NON-NLS-1$
 		it.increaseIndentation().newLine();
-		it.append("logger.log(\"Invariant broken with value: \" + newValue);"); //$NON-NLS-1$
+		it.append("Logger.getLogger(" + agentName +  ").log(\"Invariant broken with value: \" + newValue);"); //$NON-NLS-1$ //$NON-NLS-2$
 		it.decreaseIndentation().newLine();
 		it.append("}"); //$NON-NLS-1$ // If statement closed
 
@@ -128,8 +129,6 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		appendable.append(agent.getName());
 		appendable.append("Aspect {"); //$NON-NLS-1$
 		appendable.increaseIndentation().newLine();
-
-		// TODO : create a logger with the agent name
 
 		for (final XtendMember member : agent.getMembers()) {
 			if (member instanceof SarlField) {
