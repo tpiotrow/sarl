@@ -24,14 +24,17 @@ package io.sarl.aspectjgenerator.generator;
 import com.google.inject.Inject;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.xtype.XImportDeclaration;
 
 import io.sarl.aspectjgenerator.AJGeneratorPlugin;
 import io.sarl.aspectjgenerator.configuration.AJOutputConfigurationProvider;
 import io.sarl.lang.compiler.extra.AbstractExtraLanguageGenerator;
+import io.sarl.lang.compiler.extra.ExtraLanguageAppendable;
 import io.sarl.lang.compiler.extra.IExpressionGenerator;
 import io.sarl.lang.compiler.extra.IExtraLanguageGeneratorContext;
 import io.sarl.lang.sarl.SarlAgent;
 import io.sarl.lang.sarl.SarlField;
+import io.sarl.lang.sarl.SarlScript;
 
 /** The generator from SARL to AspectJ language.
  *
@@ -47,6 +50,8 @@ import io.sarl.lang.sarl.SarlField;
 public class AJGenerator extends AbstractExtraLanguageGenerator {
 
 	private static final String ASPECTJ_FILENAME_EXTENSION = ".aj"; //$NON-NLS-1$
+
+	//private static final Logger ASPECTJ_GENERATOR_LOGGER = Logger.getLogger(AJGenerator.class.getSimpleName());
 
 	private AJExpressionGenerator expressionGenerator;
 
@@ -83,6 +88,16 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		return new AJAppendable(getTypeConverter(context));
 	}
 
+	@Override
+	protected void generateImportStatement(QualifiedName importedQualifiedName, ExtraLanguageAppendable appendable,
+			IExtraLanguageGeneratorContext context) {
+		super.generateImportStatement(importedQualifiedName, appendable, context);
+		appendable.append("import ");
+		appendable.append(importedQualifiedName.toString());
+		appendable.append(";");
+		appendable.newLine();
+	}
+
 	/** Create an aspect for the given agent.
 	 *
 	 * @param member the field from which the aspect is generated.
@@ -95,13 +110,13 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		// Before advice header
 		it.append("before ("); //$NON-NLS-1$
 		it.append(member.getType().getSimpleName());
-		it.append(" newValue) : set("); //$NON-NLS-1$
+		it.append(" $$val$$) : set("); //$NON-NLS-1$
 		it.append(member.getType().getSimpleName());
 		it.append(" "); //$NON-NLS-1$
 		it.append(agentName);
 		it.append("."); //$NON-NLS-1$
 		it.append(member.getName());
-		it.append(") && args(newValue) {"); //$NON-NLS-1$
+		it.append(") && args($$val$$) {"); //$NON-NLS-1$
 		it.increaseIndentation().newLine();
 
 		// Before advice body
@@ -109,7 +124,10 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		getExpressionGenerator().generate(member.getInvariant().getCondition(), it, context);
 		it.append(") ) {"); //$NON-NLS-1$
 		it.increaseIndentation().newLine();
-		it.append("Logger.getLogger(" + agentName +  ").log(\"Invariant broken with value: \" + newValue);"); //$NON-NLS-1$ //$NON-NLS-2$
+
+		// TODO : get generated expression from generator and add it to debug message
+		it.append("Logger.getLogger(" + agentName +  ".class.getSimpleName())"
+				+ ".severe(\"Invariant broken with value: \" + $$val$$);");
 		it.decreaseIndentation().newLine();
 		it.append("}"); //$NON-NLS-1$ // If statement closed
 
@@ -124,6 +142,37 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 	 */
 	protected void _generate(SarlAgent agent, IExtraLanguageGeneratorContext context) {
 		final AJAppendable appendable = createAppendable(context);
+		final QualifiedName agentName = getQualifiedNameProvider().getFullyQualifiedName(agent);
+
+		if (!(agent.eContainer() instanceof SarlScript)) {
+			throw new IllegalStateException("Agent not contained in script");
+		}
+
+		final SarlScript script = (SarlScript) agent.eContainer();
+
+		// Imports section
+		appendable.append("package ");
+		appendable.append(agentName.skipLast(1).toString());
+		appendable.append(";");
+
+		appendable.newLine().newLine();
+
+		// Logger is always needed by the advices bodies.
+		appendable.append("import java.util.logging.Logger;").newLine(); //$NON-NLS-1$
+
+		// We have to include the java import used by agent, otherwise aspect won't compile
+		for (final XImportDeclaration inport : script.getImportSection().getImportDeclarations()) {
+			if (inport.getImportedTypeName().startsWith("java.")
+					&& !inport.getImportedTypeName().equals("java.util.logging.Logger")) {
+				appendable.append("import " + inport.getImportedTypeName());
+				appendable.append(";");
+				appendable.newLine();
+			}
+		}
+
+		appendable.newLine();
+
+		// Aspect section
 		appendable.append("public privileged aspect "); //$NON-NLS-1$
 		appendable.append(agent.getName());
 		appendable.append("Aspect {"); //$NON-NLS-1$
@@ -140,8 +189,14 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 			}
 		}
 		appendable.decreaseIndentation().newLine().append("}"); //$NON-NLS-1$
-		final QualifiedName name = getQualifiedNameProvider().getFullyQualifiedName(agent);
-		writeFile(name, appendable, context);
+
+		/*
+		 * Initially, the QN contains the correct agent name. However, appending
+		 * the string "Aspect" would create a new segement, which we don't want.
+		 * That's why we have to skip the last segment and recreate it to form
+		 * the correct QN.
+		 */
+		writeFile(agentName.skipLast(1).append(agent.getName() + "Aspect"), appendable, context);
 	}
 
 }

@@ -22,6 +22,7 @@
 package io.sarl.aspectjgenerator.generator;
 
 import java.text.MessageFormat;
+import java.util.logging.Logger;
 
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.XBinaryOperation;
@@ -55,6 +56,16 @@ import io.sarl.lang.compiler.extra.IExtraLanguageGeneratorContext;
  */
 public class AJExpressionGenerator extends AbstractExpressionGenerator {
 
+	//private QualifiedName agentName;
+
+	//public void setAgentName(QualifiedName name) {
+	//	this.agentName = name;
+	//}
+
+	//public QualifiedName getAgentName() {
+	//	return this.agentName;
+	//}
+
 	/** {@inheritDoc}
 	 */
 	@Override
@@ -68,8 +79,9 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 	 * @param context the context.
 	 * @return the operation.
 	 */
+	@SuppressWarnings("static-method")
 	protected XExpression _generate(XExpression expr, IAppendable it, IExtraLanguageGeneratorContext context) {
-		System.out.println("unknown xExpression : " + expr.toString()); //$NON-NLS-1$
+		Logger.getLogger(AJExpressionGenerator.class.getSimpleName()).warning("unknown xExpression : " + expr.toString()); //$NON-NLS-1$
 		return expr;
 	}
 
@@ -285,8 +297,12 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 	 */
 	@SuppressWarnings("static-method")
 	protected XExpression _generate(XFeatureCall featureCall, IAppendable it, IExtraLanguageGeneratorContext context) {
-		it.append(featureCall.toString());
-		//it.append(featureCall.getFeature().getQualifiedName());
+		//if (this.agentName != null) {
+		//	it.append(this.agentName.getLastSegment());
+		//	it.append(".");
+		//}
+		//it.append(featureCall.toString());
+		it.append("$$val$$");
 		return featureCall;
 	}
 
