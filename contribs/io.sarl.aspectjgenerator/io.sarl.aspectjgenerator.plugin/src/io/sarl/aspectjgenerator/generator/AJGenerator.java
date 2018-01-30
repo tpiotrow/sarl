@@ -159,6 +159,9 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 
 		// Logger is always needed by the advices bodies.
 		appendable.append("import java.util.logging.Logger;").newLine(); //$NON-NLS-1$
+		// Maybe there is a way to detect if the aspect _need_ to use IntegerRange
+		// dynamically, but in the mean time, include it by default.
+		appendable.append("import org.eclipse.xtext.xbase.lib.IntegerRange;").newLine(); //$NON-NLS-1$
 
 		// We have to include the java import used by agent, otherwise aspect won't compile
 		for (final XImportDeclaration inport : script.getImportSection().getImportDeclarations()) {

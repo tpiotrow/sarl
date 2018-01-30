@@ -100,8 +100,8 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 	@SuppressWarnings("checkstyle:cyclomaticcomplexity")
 	protected XExpression _generate(XBinaryOperation operation, IAppendable it, IExtraLanguageGeneratorContext context) {
 		final String operator = getOperatorSymbol(operation);
+
 		if (operator != null) {
-			generate(operation.getLeftOperand(), it, context);
 			switch (operator) {
 			case "-": //$NON-NLS-1$
 			case "+": //$NON-NLS-1$
@@ -123,18 +123,30 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 			case ">>": //$NON-NLS-1$
 			case "&&": //$NON-NLS-1$
 			case "||": //$NON-NLS-1$
+				generate(operation.getLeftOperand(), it, context);
 				it.append(" ").append(operator).append(" "); //$NON-NLS-1$ //$NON-NLS-2$
+				generate(operation.getRightOperand(), it, context);
 				break;
 			case "===": //$NON-NLS-1$
+				generate(operation.getLeftOperand(), it, context);
 				it.append(" == "); //$NON-NLS-1$
+				generate(operation.getRightOperand(), it, context);
 				break;
 			case "!==": //$NON-NLS-1$
+				generate(operation.getLeftOperand(), it, context);
 				it.append(" != "); //$NON-NLS-1$
+				generate(operation.getRightOperand(), it, context);
+				break;
+			case "..": //$NON-NLS-1$
+				it.append("new IntegerRange(");
+				generate(operation.getLeftOperand(), it, context);
+				it.append(",");
+				generate(operation.getRightOperand(), it, context);
+				it.append(")");
 				break;
 			default:
 				throw new IllegalArgumentException(MessageFormat.format(Messages.AJExpressionGenerator_0, operator));
 			}
-			generate(operation.getRightOperand(), it, context);
 		}
 		return operation;
 	}
