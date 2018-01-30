@@ -56,16 +56,6 @@ import io.sarl.lang.compiler.extra.IExtraLanguageGeneratorContext;
  */
 public class AJExpressionGenerator extends AbstractExpressionGenerator {
 
-	//private QualifiedName agentName;
-
-	//public void setAgentName(QualifiedName name) {
-	//	this.agentName = name;
-	//}
-
-	//public QualifiedName getAgentName() {
-	//	return this.agentName;
-	//}
-
 	/** {@inheritDoc}
 	 */
 	@Override
@@ -207,11 +197,9 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 	 * @return the expression.
 	 */
 	protected XExpression _generate(XInstanceOfExpression operator, IAppendable it, IExtraLanguageGeneratorContext context) {
-		it.append("isinstance("); //$NON-NLS-1$
 		generate(operator.getExpression(), it, context);
-		it.append(", "); //$NON-NLS-1$
+		it.append(" instanceof "); //$NON-NLS-1$
 		it.append(operator.getType().getType());
-		it.append(")"); //$NON-NLS-1$
 		return operator;
 	}
 
@@ -297,11 +285,10 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 	 */
 	@SuppressWarnings("static-method")
 	protected XExpression _generate(XFeatureCall featureCall, IAppendable it, IExtraLanguageGeneratorContext context) {
-		//if (this.agentName != null) {
-		//	it.append(this.agentName.getLastSegment());
-		//	it.append(".");
-		//}
-		//it.append(featureCall.toString());
+		// The feature call in this context filters a variable or a field. Most
+		// of the time, the filtered expression will refer to the invariant
+		// variable which we want to control the value. That's why we generate
+		// and refer to the new value assigned, represented by $$val$$.
 		it.append("$$val$$");
 		return featureCall;
 	}
@@ -317,7 +304,6 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 		generate(featureCall.getMemberCallTarget(), it, context);
 		it.append(featureCall.isExplicitStatic() ? "::" : "."); //$NON-NLS-1$ //$NON-NLS-2$
 		it.append(featureCall.getConcreteSyntaxFeatureName());
-		//it.append(featureCall.getMemberCallArguments());	// FOR LOOP
 		it.append("("); //$NON-NLS-1$
 		for (int i = 0; i < featureCall.getMemberCallArguments().size(); i++) {
 			generate(featureCall.getMemberCallArguments().get(i), it, context);
