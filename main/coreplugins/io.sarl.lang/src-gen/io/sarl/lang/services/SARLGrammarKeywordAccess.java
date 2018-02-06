@@ -523,6 +523,13 @@ public class SARLGrammarKeywordAccess {
 		return this.grammarAccess.getTypeAccess().getSpaceKeyword_2_5_2().getValue();
 	}
 
+	/** Keyword: {@code post}.
+	 * Source: io.sarl.lang.SARL
+	 */
+	public String getPostKeyword() {
+		return this.grammarAccess.getAOPMemberAccess().getPostKeyword_2_5_8_4_0().getValue();
+	}
+
 	/** Keyword: {@code continue}.
 	 * Source: io.sarl.lang.SARL
 	 */
@@ -563,6 +570,13 @@ public class SARLGrammarKeywordAccess {
 	 */
 	public String getEqualsSignGreaterThanSignKeyword() {
 		return this.grammarAccess.getXFunctionTypeRefAccess().getEqualsSignGreaterThanSignKeyword_1().getValue();
+	}
+
+	/** Keyword: {@code pre}.
+	 * Source: io.sarl.lang.SARL
+	 */
+	public String getPreKeyword() {
+		return this.grammarAccess.getAOPMemberAccess().getPreKeyword_2_5_8_3_0().getValue();
 	}
 
 	/** Keyword: {@code package}.
@@ -867,6 +881,7 @@ public class SARLGrammarKeywordAccess {
 			kws.add(getIfKeyword());
 			kws.add(getSynchronizedKeyword());
 			kws.add(getClassKeyword());
+			kws.add(getPreKeyword());
 			kws.add(getVolatileKeyword());
 			kws.add(getRequiresKeyword());
 			kws.add(getFalseKeyword());
@@ -919,6 +934,7 @@ public class SARLGrammarKeywordAccess {
 			kws.add(getThrowsKeyword());
 			kws.add(getCatchKeyword());
 			kws.add(getDoKeyword());
+			kws.add(getPostKeyword());
 			kws.add(getIsStaticAssumeKeyword());
 			kws.add(getBehaviorKeyword());
 			kws.add(getExtensionExtensionKeyword());
@@ -956,6 +972,7 @@ public class SARLGrammarKeywordAccess {
 		if (kws == null) {
 			kws = new HashSet<>();
 			kws.add(getAsKeyword());
+			kws.add(getPreKeyword());
 			kws.add(getRequiresKeyword());
 			kws.add(getWithKeyword());
 			kws.add(getItKeyword());
@@ -974,6 +991,7 @@ public class SARLGrammarKeywordAccess {
 			kws.add(getFiresKeyword());
 			kws.add(getOverrideKeyword());
 			kws.add(getInvariantKeyword());
+			kws.add(getPostKeyword());
 			kws.add(getIsStaticAssumeKeyword());
 			kws.add(getBehaviorKeyword());
 			kws.add(getExtensionExtensionKeyword());

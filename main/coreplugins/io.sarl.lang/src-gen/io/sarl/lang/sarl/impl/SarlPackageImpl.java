@@ -415,6 +415,46 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSarlAction_PreConditions()
+	{
+		return (EReference)sarlActionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSarlAction_PreConditionsName()
+	{
+		return (EAttribute)sarlActionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSarlAction_PostConditions()
+	{
+		return (EReference)sarlActionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSarlAction_PostConditionsName()
+	{
+		return (EAttribute)sarlActionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSarlConstructor()
 	{
 		return sarlConstructorEClass;
@@ -458,6 +498,46 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 	public EReference getSarlBehaviorUnit_Expression()
 	{
 		return (EReference)sarlBehaviorUnitEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSarlBehaviorUnit_PreConditions()
+	{
+		return (EReference)sarlBehaviorUnitEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSarlBehaviorUnit_PreConditionsName()
+	{
+		return (EAttribute)sarlBehaviorUnitEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSarlBehaviorUnit_PostConditions()
+	{
+		return (EReference)sarlBehaviorUnitEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSarlBehaviorUnit_PostConditionsName()
+	{
+		return (EAttribute)sarlBehaviorUnitEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -806,6 +886,10 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 
 		sarlActionEClass = createEClass(SARL_ACTION);
 		createEReference(sarlActionEClass, SARL_ACTION__FIRED_EVENTS);
+		createEReference(sarlActionEClass, SARL_ACTION__PRE_CONDITIONS);
+		createEAttribute(sarlActionEClass, SARL_ACTION__PRE_CONDITIONS_NAME);
+		createEReference(sarlActionEClass, SARL_ACTION__POST_CONDITIONS);
+		createEAttribute(sarlActionEClass, SARL_ACTION__POST_CONDITIONS_NAME);
 
 		sarlConstructorEClass = createEClass(SARL_CONSTRUCTOR);
 
@@ -813,6 +897,10 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 		createEReference(sarlBehaviorUnitEClass, SARL_BEHAVIOR_UNIT__NAME);
 		createEReference(sarlBehaviorUnitEClass, SARL_BEHAVIOR_UNIT__GUARD);
 		createEReference(sarlBehaviorUnitEClass, SARL_BEHAVIOR_UNIT__EXPRESSION);
+		createEReference(sarlBehaviorUnitEClass, SARL_BEHAVIOR_UNIT__PRE_CONDITIONS);
+		createEAttribute(sarlBehaviorUnitEClass, SARL_BEHAVIOR_UNIT__PRE_CONDITIONS_NAME);
+		createEReference(sarlBehaviorUnitEClass, SARL_BEHAVIOR_UNIT__POST_CONDITIONS);
+		createEAttribute(sarlBehaviorUnitEClass, SARL_BEHAVIOR_UNIT__POST_CONDITIONS_NAME);
 
 		sarlCapacityUsesEClass = createEClass(SARL_CAPACITY_USES);
 		createEReference(sarlCapacityUsesEClass, SARL_CAPACITY_USES__CAPACITIES);
@@ -939,6 +1027,10 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 
 		initEClass(sarlActionEClass, SarlAction.class, "SarlAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSarlAction_FiredEvents(), theTypesPackage.getJvmTypeReference(), null, "firedEvents", null, 0, -1, SarlAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSarlAction_PreConditions(), theXbasePackage.getXExpression(), null, "preConditions", null, 0, -1, SarlAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSarlAction_PreConditionsName(), ecorePackage.getEString(), "preConditionsName", null, 0, 1, SarlAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSarlAction_PostConditions(), theXbasePackage.getXExpression(), null, "postConditions", null, 0, -1, SarlAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSarlAction_PostConditionsName(), ecorePackage.getEString(), "postConditionsName", null, 0, 1, SarlAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sarlConstructorEClass, SarlConstructor.class, "SarlConstructor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -946,6 +1038,10 @@ public class SarlPackageImpl extends EPackageImpl implements SarlPackage
 		initEReference(getSarlBehaviorUnit_Name(), theTypesPackage.getJvmParameterizedTypeReference(), null, "name", null, 0, 1, SarlBehaviorUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSarlBehaviorUnit_Guard(), theXbasePackage.getXExpression(), null, "guard", null, 0, 1, SarlBehaviorUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSarlBehaviorUnit_Expression(), theXbasePackage.getXExpression(), null, "expression", null, 0, 1, SarlBehaviorUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSarlBehaviorUnit_PreConditions(), theXbasePackage.getXExpression(), null, "preConditions", null, 0, -1, SarlBehaviorUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSarlBehaviorUnit_PreConditionsName(), ecorePackage.getEString(), "preConditionsName", null, 0, 1, SarlBehaviorUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSarlBehaviorUnit_PostConditions(), theXbasePackage.getXExpression(), null, "postConditions", null, 0, -1, SarlBehaviorUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSarlBehaviorUnit_PostConditionsName(), ecorePackage.getEString(), "postConditionsName", null, 0, 1, SarlBehaviorUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sarlCapacityUsesEClass, SarlCapacityUses.class, "SarlCapacityUses", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSarlCapacityUses_Capacities(), theTypesPackage.getJvmParameterizedTypeReference(), null, "capacities", null, 0, -1, SarlCapacityUses.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

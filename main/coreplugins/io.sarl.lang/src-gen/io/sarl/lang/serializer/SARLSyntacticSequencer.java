@@ -249,6 +249,10 @@ public class SARLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     firedEvents+=JvmTypeReference (ambiguity) (rule end)
 	 *     name=FunctionID ('(' ')')? (ambiguity) (rule end)
 	 *     parameters+=Parameter ')' (ambiguity) (rule end)
+	 *     postConditionName=ID (ambiguity) (rule end)
+	 *     postConditions+=XExpression (ambiguity) (rule end)
+	 *     preConditions+=XExpression (ambiguity) (rule end)
+	 *     preConditionsName=ID (ambiguity) (rule end)
 	 *     returnType=TypeReferenceNoTypeArgs (ambiguity) (rule end)
 	 *     returnType=TypeReferenceWithTypeArgs (ambiguity) (rule end)
 	 *     typeParameters+=JvmTypeParameter (ambiguity) (rule end)
@@ -297,6 +301,8 @@ public class SARLSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     name=FunctionID (ambiguity) ':' returnType=TypeReferenceWithTypeArgs
 	 *     name=FunctionID (ambiguity) ';'? (rule end)
 	 *     name=FunctionID (ambiguity) 'fires' firedEvents+=JvmTypeReference
+	 *     name=FunctionID (ambiguity) 'post' postConditions+=XExpression
+	 *     name=FunctionID (ambiguity) 'pre' preConditions+=XExpression
 	 *     name=FunctionID (ambiguity) 'throws' exceptions+=JvmTypeReference
 	 *     name=FunctionID (ambiguity) 'with' typeParameters+=JvmTypeParameter
 	 *     name=FunctionID (ambiguity) expression=XBlockExpression

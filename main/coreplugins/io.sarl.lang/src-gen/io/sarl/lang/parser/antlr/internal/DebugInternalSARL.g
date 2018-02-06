@@ -389,6 +389,30 @@ ruleAOPMember:
 			ruleXExpression
 			']'
 		)?
+		(
+			'pre'
+			ruleXExpression
+			(
+				','
+				ruleXExpression
+			)*
+			(
+				'as'
+				RULE_ID
+			)?
+		)?
+		(
+			'post'
+			ruleXExpression
+			(
+				','
+				ruleXExpression
+			)*
+			(
+				'as'
+				RULE_ID
+			)?
+		)?
 		ruleXBlockExpression
 		    |
 		'uses'
@@ -551,6 +575,32 @@ ruleAOPMember:
 				','
 				ruleJvmTypeParameter
 			)*
+		)?
+		    |
+		(
+			'pre'
+			ruleXExpression
+			(
+				','
+				ruleXExpression
+			)*
+			(
+				'as'
+				RULE_ID
+			)?
+		)?
+		    |
+		(
+			'post'
+			ruleXExpression
+			(
+				','
+				ruleXExpression
+			)*
+			(
+				'as'
+				RULE_ID
+			)?
 		)?
 		)*
 		(

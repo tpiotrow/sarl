@@ -181,6 +181,10 @@ AOPMember returns xtend::XtendMember:
 		// Behavior Unit
 		{SarlBehaviorUnit.annotationInfo = current}
 		'on' name=JvmParameterizedTypeReference ('[' guard=XExpression ']')?
+		(
+			('pre' preConditions+=XExpression (',' preConditions+=XExpression)* ('as' preConditionName=ID)?)?
+			('post' postConditions+=XExpression (',' postConditions+=XExpression)* ('as' postConditionName=ID)?)?
+		)
 		expression=XBlockExpression
 	|
 		// Capacity Uses
@@ -246,6 +250,10 @@ AOPMember returns xtend::XtendMember:
 			('fires' firedEvents+=JvmTypeReference (',' firedEvents+=JvmTypeReference)*)?
 			&
 			('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?
+			&
+			('pre' preConditions+=XExpression (',' preConditions+=XExpression)* ('as' preConditionsName=ID)?)?
+			&
+			('post' postConditions+=XExpression (',' postConditions+=XExpression)* ('as' postConditionName=ID)?)?
 		)
 		(expression=XBlockExpression | ';')?
 	|

@@ -875,10 +875,14 @@ public class SARLSemanticSequencer extends XtendSemanticSequencer {
 	 *         (parameters+=Parameter parameters+=Parameter*)? 
 	 *         (returnType=TypeReferenceWithTypeArgs | returnType=TypeReferenceNoTypeArgs)? 
 	 *         (
-	 *             (exceptions+=JvmTypeReference exceptions+=JvmTypeReference*) | 
-	 *             (firedEvents+=JvmTypeReference firedEvents+=JvmTypeReference*) | 
-	 *             (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)
-	 *         )* 
+	 *             (
+	 *                 (exceptions+=JvmTypeReference exceptions+=JvmTypeReference*) | 
+	 *                 (firedEvents+=JvmTypeReference firedEvents+=JvmTypeReference*) | 
+	 *                 (typeParameters+=JvmTypeParameter typeParameters+=JvmTypeParameter*)
+	 *             )? 
+	 *             (preConditions+=XExpression preConditions+=XExpression* preConditionsName=ID?)? 
+	 *             (postConditions+=XExpression postConditions+=XExpression* postConditionName=ID?)?
+	 *         )+ 
 	 *         expression=XBlockExpression?
 	 *     )
 	 */
@@ -925,7 +929,14 @@ public class SARLSemanticSequencer extends XtendSemanticSequencer {
 	 *     AOPMember returns SarlBehaviorUnit
 	 *
 	 * Constraint:
-	 *     (annotationInfo=AOPMember_SarlBehaviorUnit_2_0_0 name=JvmParameterizedTypeReference guard=XExpression? expression=XBlockExpression)
+	 *     (
+	 *         annotationInfo=AOPMember_SarlBehaviorUnit_2_0_0 
+	 *         name=JvmParameterizedTypeReference 
+	 *         guard=XExpression? 
+	 *         (preConditions+=XExpression preConditions+=XExpression* preConditionName=ID?)? 
+	 *         (postConditions+=XExpression postConditions+=XExpression* postConditionName=ID?)? 
+	 *         expression=XBlockExpression
+	 *     )
 	 */
 	protected void sequence_AOPMember(ISerializationContext context, SarlBehaviorUnit semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

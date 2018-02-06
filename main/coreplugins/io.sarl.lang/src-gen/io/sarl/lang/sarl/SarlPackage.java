@@ -400,13 +400,49 @@ public interface SarlPackage extends EPackage
 	int SARL_ACTION__FIRED_EVENTS = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Pre Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_ACTION__PRE_CONDITIONS = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Pre Conditions Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_ACTION__PRE_CONDITIONS_NAME = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Post Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_ACTION__POST_CONDITIONS = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Post Conditions Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_ACTION__POST_CONDITIONS_NAME = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SARL_ACTION_FEATURE_COUNT = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 1;
+	int SARL_ACTION_FEATURE_COUNT = XtendPackage.XTEND_FUNCTION_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link io.sarl.lang.sarl.impl.SarlConstructorImpl <em>Constructor</em>}' class.
@@ -573,13 +609,49 @@ public interface SarlPackage extends EPackage
 	int SARL_BEHAVIOR_UNIT__EXPRESSION = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Pre Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_BEHAVIOR_UNIT__PRE_CONDITIONS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Pre Conditions Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_BEHAVIOR_UNIT__PRE_CONDITIONS_NAME = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Post Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_BEHAVIOR_UNIT__POST_CONDITIONS = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Post Conditions Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SARL_BEHAVIOR_UNIT__POST_CONDITIONS_NAME = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Behavior Unit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SARL_BEHAVIOR_UNIT_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 3;
+	int SARL_BEHAVIOR_UNIT_FEATURE_COUNT = XtendPackage.XTEND_MEMBER_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link io.sarl.lang.sarl.impl.SarlCapacityUsesImpl <em>Capacity Uses</em>}' class.
@@ -1939,6 +2011,50 @@ public interface SarlPackage extends EPackage
 	EReference getSarlAction_FiredEvents();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link io.sarl.lang.sarl.SarlAction#getPreConditions <em>Pre Conditions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Pre Conditions</em>'.
+	 * @see io.sarl.lang.sarl.SarlAction#getPreConditions()
+	 * @see #getSarlAction()
+	 * @generated
+	 */
+	EReference getSarlAction_PreConditions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link io.sarl.lang.sarl.SarlAction#getPreConditionsName <em>Pre Conditions Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pre Conditions Name</em>'.
+	 * @see io.sarl.lang.sarl.SarlAction#getPreConditionsName()
+	 * @see #getSarlAction()
+	 * @generated
+	 */
+	EAttribute getSarlAction_PreConditionsName();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link io.sarl.lang.sarl.SarlAction#getPostConditions <em>Post Conditions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Post Conditions</em>'.
+	 * @see io.sarl.lang.sarl.SarlAction#getPostConditions()
+	 * @see #getSarlAction()
+	 * @generated
+	 */
+	EReference getSarlAction_PostConditions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link io.sarl.lang.sarl.SarlAction#getPostConditionsName <em>Post Conditions Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Post Conditions Name</em>'.
+	 * @see io.sarl.lang.sarl.SarlAction#getPostConditionsName()
+	 * @see #getSarlAction()
+	 * @generated
+	 */
+	EAttribute getSarlAction_PostConditionsName();
+
+	/**
 	 * Returns the meta object for class '{@link io.sarl.lang.sarl.SarlConstructor <em>Constructor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1990,6 +2106,50 @@ public interface SarlPackage extends EPackage
 	 * @generated
 	 */
 	EReference getSarlBehaviorUnit_Expression();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link io.sarl.lang.sarl.SarlBehaviorUnit#getPreConditions <em>Pre Conditions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Pre Conditions</em>'.
+	 * @see io.sarl.lang.sarl.SarlBehaviorUnit#getPreConditions()
+	 * @see #getSarlBehaviorUnit()
+	 * @generated
+	 */
+	EReference getSarlBehaviorUnit_PreConditions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link io.sarl.lang.sarl.SarlBehaviorUnit#getPreConditionsName <em>Pre Conditions Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pre Conditions Name</em>'.
+	 * @see io.sarl.lang.sarl.SarlBehaviorUnit#getPreConditionsName()
+	 * @see #getSarlBehaviorUnit()
+	 * @generated
+	 */
+	EAttribute getSarlBehaviorUnit_PreConditionsName();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link io.sarl.lang.sarl.SarlBehaviorUnit#getPostConditions <em>Post Conditions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Post Conditions</em>'.
+	 * @see io.sarl.lang.sarl.SarlBehaviorUnit#getPostConditions()
+	 * @see #getSarlBehaviorUnit()
+	 * @generated
+	 */
+	EReference getSarlBehaviorUnit_PostConditions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link io.sarl.lang.sarl.SarlBehaviorUnit#getPostConditionsName <em>Post Conditions Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Post Conditions Name</em>'.
+	 * @see io.sarl.lang.sarl.SarlBehaviorUnit#getPostConditionsName()
+	 * @see #getSarlBehaviorUnit()
+	 * @generated
+	 */
+	EAttribute getSarlBehaviorUnit_PostConditionsName();
 
 	/**
 	 * Returns the meta object for class '{@link io.sarl.lang.sarl.SarlCapacityUses <em>Capacity Uses</em>}'.
@@ -2428,6 +2588,38 @@ public interface SarlPackage extends EPackage
 		EReference SARL_ACTION__FIRED_EVENTS = eINSTANCE.getSarlAction_FiredEvents();
 
 		/**
+		 * The meta object literal for the '<em><b>Pre Conditions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SARL_ACTION__PRE_CONDITIONS = eINSTANCE.getSarlAction_PreConditions();
+
+		/**
+		 * The meta object literal for the '<em><b>Pre Conditions Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SARL_ACTION__PRE_CONDITIONS_NAME = eINSTANCE.getSarlAction_PreConditionsName();
+
+		/**
+		 * The meta object literal for the '<em><b>Post Conditions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SARL_ACTION__POST_CONDITIONS = eINSTANCE.getSarlAction_PostConditions();
+
+		/**
+		 * The meta object literal for the '<em><b>Post Conditions Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SARL_ACTION__POST_CONDITIONS_NAME = eINSTANCE.getSarlAction_PostConditionsName();
+
+		/**
 		 * The meta object literal for the '{@link io.sarl.lang.sarl.impl.SarlConstructorImpl <em>Constructor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2470,6 +2662,38 @@ public interface SarlPackage extends EPackage
 		 * @generated
 		 */
 		EReference SARL_BEHAVIOR_UNIT__EXPRESSION = eINSTANCE.getSarlBehaviorUnit_Expression();
+
+		/**
+		 * The meta object literal for the '<em><b>Pre Conditions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SARL_BEHAVIOR_UNIT__PRE_CONDITIONS = eINSTANCE.getSarlBehaviorUnit_PreConditions();
+
+		/**
+		 * The meta object literal for the '<em><b>Pre Conditions Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SARL_BEHAVIOR_UNIT__PRE_CONDITIONS_NAME = eINSTANCE.getSarlBehaviorUnit_PreConditionsName();
+
+		/**
+		 * The meta object literal for the '<em><b>Post Conditions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SARL_BEHAVIOR_UNIT__POST_CONDITIONS = eINSTANCE.getSarlBehaviorUnit_PostConditions();
+
+		/**
+		 * The meta object literal for the '<em><b>Post Conditions Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SARL_BEHAVIOR_UNIT__POST_CONDITIONS_NAME = eINSTANCE.getSarlBehaviorUnit_PostConditionsName();
 
 		/**
 		 * The meta object literal for the '{@link io.sarl.lang.sarl.impl.SarlCapacityUsesImpl <em>Capacity Uses</em>}' class.

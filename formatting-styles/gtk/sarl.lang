@@ -145,6 +145,8 @@
    <keyword>on</keyword>
    <keyword>override</keyword>
    <keyword>package</keyword>
+   <keyword>post</keyword>
+   <keyword>pre</keyword>
    <keyword>private</keyword>
    <keyword>protected</keyword>
    <keyword>public</keyword>

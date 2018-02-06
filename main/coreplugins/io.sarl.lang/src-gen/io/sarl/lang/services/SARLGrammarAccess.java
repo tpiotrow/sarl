@@ -1721,8 +1721,33 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cGuardAssignment_2_0_3_1 = (Assignment)cGroup_2_0_3.eContents().get(1);
 		private final RuleCall cGuardXExpressionParserRuleCall_2_0_3_1_0 = (RuleCall)cGuardAssignment_2_0_3_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_2_0_3_2 = (Keyword)cGroup_2_0_3.eContents().get(2);
-		private final Assignment cExpressionAssignment_2_0_4 = (Assignment)cGroup_2_0.eContents().get(4);
-		private final RuleCall cExpressionXBlockExpressionParserRuleCall_2_0_4_0 = (RuleCall)cExpressionAssignment_2_0_4.eContents().get(0);
+		private final Group cGroup_2_0_4 = (Group)cGroup_2_0.eContents().get(4);
+		private final Group cGroup_2_0_4_0 = (Group)cGroup_2_0_4.eContents().get(0);
+		private final Keyword cPreKeyword_2_0_4_0_0 = (Keyword)cGroup_2_0_4_0.eContents().get(0);
+		private final Assignment cPreConditionsAssignment_2_0_4_0_1 = (Assignment)cGroup_2_0_4_0.eContents().get(1);
+		private final RuleCall cPreConditionsXExpressionParserRuleCall_2_0_4_0_1_0 = (RuleCall)cPreConditionsAssignment_2_0_4_0_1.eContents().get(0);
+		private final Group cGroup_2_0_4_0_2 = (Group)cGroup_2_0_4_0.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0_4_0_2_0 = (Keyword)cGroup_2_0_4_0_2.eContents().get(0);
+		private final Assignment cPreConditionsAssignment_2_0_4_0_2_1 = (Assignment)cGroup_2_0_4_0_2.eContents().get(1);
+		private final RuleCall cPreConditionsXExpressionParserRuleCall_2_0_4_0_2_1_0 = (RuleCall)cPreConditionsAssignment_2_0_4_0_2_1.eContents().get(0);
+		private final Group cGroup_2_0_4_0_3 = (Group)cGroup_2_0_4_0.eContents().get(3);
+		private final Keyword cAsKeyword_2_0_4_0_3_0 = (Keyword)cGroup_2_0_4_0_3.eContents().get(0);
+		private final Assignment cPreConditionNameAssignment_2_0_4_0_3_1 = (Assignment)cGroup_2_0_4_0_3.eContents().get(1);
+		private final RuleCall cPreConditionNameIDTerminalRuleCall_2_0_4_0_3_1_0 = (RuleCall)cPreConditionNameAssignment_2_0_4_0_3_1.eContents().get(0);
+		private final Group cGroup_2_0_4_1 = (Group)cGroup_2_0_4.eContents().get(1);
+		private final Keyword cPostKeyword_2_0_4_1_0 = (Keyword)cGroup_2_0_4_1.eContents().get(0);
+		private final Assignment cPostConditionsAssignment_2_0_4_1_1 = (Assignment)cGroup_2_0_4_1.eContents().get(1);
+		private final RuleCall cPostConditionsXExpressionParserRuleCall_2_0_4_1_1_0 = (RuleCall)cPostConditionsAssignment_2_0_4_1_1.eContents().get(0);
+		private final Group cGroup_2_0_4_1_2 = (Group)cGroup_2_0_4_1.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0_4_1_2_0 = (Keyword)cGroup_2_0_4_1_2.eContents().get(0);
+		private final Assignment cPostConditionsAssignment_2_0_4_1_2_1 = (Assignment)cGroup_2_0_4_1_2.eContents().get(1);
+		private final RuleCall cPostConditionsXExpressionParserRuleCall_2_0_4_1_2_1_0 = (RuleCall)cPostConditionsAssignment_2_0_4_1_2_1.eContents().get(0);
+		private final Group cGroup_2_0_4_1_3 = (Group)cGroup_2_0_4_1.eContents().get(3);
+		private final Keyword cAsKeyword_2_0_4_1_3_0 = (Keyword)cGroup_2_0_4_1_3.eContents().get(0);
+		private final Assignment cPostConditionNameAssignment_2_0_4_1_3_1 = (Assignment)cGroup_2_0_4_1_3.eContents().get(1);
+		private final RuleCall cPostConditionNameIDTerminalRuleCall_2_0_4_1_3_1_0 = (RuleCall)cPostConditionNameAssignment_2_0_4_1_3_1.eContents().get(0);
+		private final Assignment cExpressionAssignment_2_0_5 = (Assignment)cGroup_2_0.eContents().get(5);
+		private final RuleCall cExpressionXBlockExpressionParserRuleCall_2_0_5_0 = (RuleCall)cExpressionAssignment_2_0_5.eContents().get(0);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
 		private final Action cSarlCapacityUsesAnnotationInfoAction_2_1_0 = (Action)cGroup_2_1.eContents().get(0);
 		private final Keyword cUsesKeyword_2_1_1 = (Keyword)cGroup_2_1.eContents().get(1);
@@ -1898,6 +1923,30 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCommaKeyword_2_5_8_2_2_0 = (Keyword)cGroup_2_5_8_2_2.eContents().get(0);
 		private final Assignment cTypeParametersAssignment_2_5_8_2_2_1 = (Assignment)cGroup_2_5_8_2_2.eContents().get(1);
 		private final RuleCall cTypeParametersJvmTypeParameterParserRuleCall_2_5_8_2_2_1_0 = (RuleCall)cTypeParametersAssignment_2_5_8_2_2_1.eContents().get(0);
+		private final Group cGroup_2_5_8_3 = (Group)cUnorderedGroup_2_5_8.eContents().get(3);
+		private final Keyword cPreKeyword_2_5_8_3_0 = (Keyword)cGroup_2_5_8_3.eContents().get(0);
+		private final Assignment cPreConditionsAssignment_2_5_8_3_1 = (Assignment)cGroup_2_5_8_3.eContents().get(1);
+		private final RuleCall cPreConditionsXExpressionParserRuleCall_2_5_8_3_1_0 = (RuleCall)cPreConditionsAssignment_2_5_8_3_1.eContents().get(0);
+		private final Group cGroup_2_5_8_3_2 = (Group)cGroup_2_5_8_3.eContents().get(2);
+		private final Keyword cCommaKeyword_2_5_8_3_2_0 = (Keyword)cGroup_2_5_8_3_2.eContents().get(0);
+		private final Assignment cPreConditionsAssignment_2_5_8_3_2_1 = (Assignment)cGroup_2_5_8_3_2.eContents().get(1);
+		private final RuleCall cPreConditionsXExpressionParserRuleCall_2_5_8_3_2_1_0 = (RuleCall)cPreConditionsAssignment_2_5_8_3_2_1.eContents().get(0);
+		private final Group cGroup_2_5_8_3_3 = (Group)cGroup_2_5_8_3.eContents().get(3);
+		private final Keyword cAsKeyword_2_5_8_3_3_0 = (Keyword)cGroup_2_5_8_3_3.eContents().get(0);
+		private final Assignment cPreConditionsNameAssignment_2_5_8_3_3_1 = (Assignment)cGroup_2_5_8_3_3.eContents().get(1);
+		private final RuleCall cPreConditionsNameIDTerminalRuleCall_2_5_8_3_3_1_0 = (RuleCall)cPreConditionsNameAssignment_2_5_8_3_3_1.eContents().get(0);
+		private final Group cGroup_2_5_8_4 = (Group)cUnorderedGroup_2_5_8.eContents().get(4);
+		private final Keyword cPostKeyword_2_5_8_4_0 = (Keyword)cGroup_2_5_8_4.eContents().get(0);
+		private final Assignment cPostConditionsAssignment_2_5_8_4_1 = (Assignment)cGroup_2_5_8_4.eContents().get(1);
+		private final RuleCall cPostConditionsXExpressionParserRuleCall_2_5_8_4_1_0 = (RuleCall)cPostConditionsAssignment_2_5_8_4_1.eContents().get(0);
+		private final Group cGroup_2_5_8_4_2 = (Group)cGroup_2_5_8_4.eContents().get(2);
+		private final Keyword cCommaKeyword_2_5_8_4_2_0 = (Keyword)cGroup_2_5_8_4_2.eContents().get(0);
+		private final Assignment cPostConditionsAssignment_2_5_8_4_2_1 = (Assignment)cGroup_2_5_8_4_2.eContents().get(1);
+		private final RuleCall cPostConditionsXExpressionParserRuleCall_2_5_8_4_2_1_0 = (RuleCall)cPostConditionsAssignment_2_5_8_4_2_1.eContents().get(0);
+		private final Group cGroup_2_5_8_4_3 = (Group)cGroup_2_5_8_4.eContents().get(3);
+		private final Keyword cAsKeyword_2_5_8_4_3_0 = (Keyword)cGroup_2_5_8_4_3.eContents().get(0);
+		private final Assignment cPostConditionNameAssignment_2_5_8_4_3_1 = (Assignment)cGroup_2_5_8_4_3.eContents().get(1);
+		private final RuleCall cPostConditionNameIDTerminalRuleCall_2_5_8_4_3_1_0 = (RuleCall)cPostConditionNameAssignment_2_5_8_4_3_1.eContents().get(0);
 		private final Alternatives cAlternatives_2_5_9 = (Alternatives)cGroup_2_5.eContents().get(9);
 		private final Assignment cExpressionAssignment_2_5_9_0 = (Assignment)cAlternatives_2_5_9.eContents().get(0);
 		private final RuleCall cExpressionXBlockExpressionParserRuleCall_2_5_9_0_0 = (RuleCall)cExpressionAssignment_2_5_9_0.eContents().get(0);
@@ -1995,8 +2044,9 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//// Members for agent-oriented types
 		//AOPMember xtend::XtendMember:
 		//	{xtend::XtendMember} annotations+=XAnnotation* ({SarlBehaviorUnit.annotationInfo=current}
-		//	'on' name=JvmParameterizedTypeReference ('[' guard=XExpression ']')?
-		//	expression=XBlockExpression
+		//	'on' name=JvmParameterizedTypeReference ('[' guard=XExpression ']')? (('pre' preConditions+=XExpression (','
+		//	preConditions+=XExpression)* ('as' preConditionName=ID)?)? ('post' postConditions+=XExpression (','
+		//	postConditions+=XExpression)* ('as' postConditionName=ID)?)?) expression=XBlockExpression
 		//	| {SarlCapacityUses.annotationInfo=current}
 		//	'uses' capacities+=JvmParameterizedTypeReference (',' capacities+=JvmParameterizedTypeReference)* ';'?
 		//	| {SarlRequiredCapacity.annotationInfo=current}
@@ -2021,8 +2071,10 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//	')')? (':' (returnType=TypeReferenceWithTypeArgs | returnType=TypeReferenceNoTypeArgs))? (('throws'
 		//	exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
 		//	& ('fires' firedEvents+=JvmTypeReference (',' firedEvents+=JvmTypeReference)*)?
-		//	& ('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?) (expression=XBlockExpression |
-		//	';')?
+		//	& ('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?
+		//	& ('pre' preConditions+=XExpression (',' preConditions+=XExpression)* ('as' preConditionsName=ID)?)?
+		//	& ('post' postConditions+=XExpression (',' postConditions+=XExpression)* ('as' postConditionName=ID)?)?)
+		//	(expression=XBlockExpression | ';')?
 		//	| {SarlClass.annotationInfo=current} modifiers+=CommonModifier*
 		//	'class' name=ValidID ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? (('extends'
 		//	extends=JvmParameterizedTypeReference)?
@@ -2041,7 +2093,9 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{xtend::XtendMember} annotations+=XAnnotation* ({SarlBehaviorUnit.annotationInfo=current} 'on'
-		//name=JvmParameterizedTypeReference ('[' guard=XExpression ']')? expression=XBlockExpression |
+		//name=JvmParameterizedTypeReference ('[' guard=XExpression ']')? (('pre' preConditions+=XExpression (','
+		//preConditions+=XExpression)* ('as' preConditionName=ID)?)? ('post' postConditions+=XExpression (','
+		//postConditions+=XExpression)* ('as' postConditionName=ID)?)?) expression=XBlockExpression |
 		//{SarlCapacityUses.annotationInfo=current} 'uses' capacities+=JvmParameterizedTypeReference (','
 		//capacities+=JvmParameterizedTypeReference)* ';'? | {SarlRequiredCapacity.annotationInfo=current} 'requires'
 		//capacities+=JvmParameterizedTypeReference (',' capacities+=JvmParameterizedTypeReference)* ';'? |
@@ -2058,7 +2112,9 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//(parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (':' (returnType=TypeReferenceWithTypeArgs |
 		//returnType=TypeReferenceNoTypeArgs))? (('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)? &
 		//('fires' firedEvents+=JvmTypeReference (',' firedEvents+=JvmTypeReference)*)? & ('with'
-		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?) (expression=XBlockExpression | ';')? |
+		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)? & ('pre' preConditions+=XExpression (','
+		//preConditions+=XExpression)* ('as' preConditionsName=ID)?)? & ('post' postConditions+=XExpression (','
+		//postConditions+=XExpression)* ('as' postConditionName=ID)?)?) (expression=XBlockExpression | ';')? |
 		//{SarlClass.annotationInfo=current} modifiers+=CommonModifier* 'class' name=ValidID ('<'
 		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? (('extends'
 		//extends=JvmParameterizedTypeReference)? & ('implements' implements+=JvmParameterizedTypeReference (','
@@ -2080,7 +2136,9 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//XAnnotation
 		public RuleCall getAnnotationsXAnnotationParserRuleCall_1_0() { return cAnnotationsXAnnotationParserRuleCall_1_0; }
 		
-		//{SarlBehaviorUnit.annotationInfo=current} 'on' name=JvmParameterizedTypeReference ('[' guard=XExpression ']')?
+		//{SarlBehaviorUnit.annotationInfo=current} 'on' name=JvmParameterizedTypeReference ('[' guard=XExpression ']')? (('pre'
+		//preConditions+=XExpression (',' preConditions+=XExpression)* ('as' preConditionName=ID)?)? ('post'
+		//postConditions+=XExpression (',' postConditions+=XExpression)* ('as' postConditionName=ID)?)?)
 		//expression=XBlockExpression | {SarlCapacityUses.annotationInfo=current} 'uses'
 		//capacities+=JvmParameterizedTypeReference (',' capacities+=JvmParameterizedTypeReference)* ';'? |
 		//{SarlRequiredCapacity.annotationInfo=current} 'requires' capacities+=JvmParameterizedTypeReference (','
@@ -2097,8 +2155,10 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//name=FunctionID ('(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (':'
 		//(returnType=TypeReferenceWithTypeArgs | returnType=TypeReferenceNoTypeArgs))? (('throws' exceptions+=JvmTypeReference
 		//(',' exceptions+=JvmTypeReference)*)? & ('fires' firedEvents+=JvmTypeReference (',' firedEvents+=JvmTypeReference)*)? &
-		//('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?) (expression=XBlockExpression |
-		//';')? | {SarlClass.annotationInfo=current} modifiers+=CommonModifier* 'class' name=ValidID ('<'
+		//('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)? & ('pre' preConditions+=XExpression
+		//(',' preConditions+=XExpression)* ('as' preConditionsName=ID)?)? & ('post' postConditions+=XExpression (','
+		//postConditions+=XExpression)* ('as' postConditionName=ID)?)?) (expression=XBlockExpression | ';')? |
+		//{SarlClass.annotationInfo=current} modifiers+=CommonModifier* 'class' name=ValidID ('<'
 		//typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? (('extends'
 		//extends=JvmParameterizedTypeReference)? & ('implements' implements+=JvmParameterizedTypeReference (','
 		//implements+=JvmParameterizedTypeReference)*)?) '{' members+=Member* '}' | {SarlInterface.annotationInfo=current}
@@ -2110,7 +2170,9 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//members+=AnnotationField* '}'
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
-		//{SarlBehaviorUnit.annotationInfo=current} 'on' name=JvmParameterizedTypeReference ('[' guard=XExpression ']')?
+		//{SarlBehaviorUnit.annotationInfo=current} 'on' name=JvmParameterizedTypeReference ('[' guard=XExpression ']')? (('pre'
+		//preConditions+=XExpression (',' preConditions+=XExpression)* ('as' preConditionName=ID)?)? ('post'
+		//postConditions+=XExpression (',' postConditions+=XExpression)* ('as' postConditionName=ID)?)?)
 		//expression=XBlockExpression
 		public Group getGroup_2_0() { return cGroup_2_0; }
 		
@@ -2141,11 +2203,87 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//']'
 		public Keyword getRightSquareBracketKeyword_2_0_3_2() { return cRightSquareBracketKeyword_2_0_3_2; }
 		
+		//('pre' preConditions+=XExpression (',' preConditions+=XExpression)* ('as' preConditionName=ID)?)? ('post'
+		//postConditions+=XExpression (',' postConditions+=XExpression)* ('as' postConditionName=ID)?)?
+		public Group getGroup_2_0_4() { return cGroup_2_0_4; }
+		
+		//('pre' preConditions+=XExpression (',' preConditions+=XExpression)* ('as' preConditionName=ID)?)?
+		public Group getGroup_2_0_4_0() { return cGroup_2_0_4_0; }
+		
+		//'pre'
+		public Keyword getPreKeyword_2_0_4_0_0() { return cPreKeyword_2_0_4_0_0; }
+		
+		//preConditions+=XExpression
+		public Assignment getPreConditionsAssignment_2_0_4_0_1() { return cPreConditionsAssignment_2_0_4_0_1; }
+		
+		//XExpression
+		public RuleCall getPreConditionsXExpressionParserRuleCall_2_0_4_0_1_0() { return cPreConditionsXExpressionParserRuleCall_2_0_4_0_1_0; }
+		
+		//(',' preConditions+=XExpression)*
+		public Group getGroup_2_0_4_0_2() { return cGroup_2_0_4_0_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_0_4_0_2_0() { return cCommaKeyword_2_0_4_0_2_0; }
+		
+		//preConditions+=XExpression
+		public Assignment getPreConditionsAssignment_2_0_4_0_2_1() { return cPreConditionsAssignment_2_0_4_0_2_1; }
+		
+		//XExpression
+		public RuleCall getPreConditionsXExpressionParserRuleCall_2_0_4_0_2_1_0() { return cPreConditionsXExpressionParserRuleCall_2_0_4_0_2_1_0; }
+		
+		//('as' preConditionName=ID)?
+		public Group getGroup_2_0_4_0_3() { return cGroup_2_0_4_0_3; }
+		
+		//'as'
+		public Keyword getAsKeyword_2_0_4_0_3_0() { return cAsKeyword_2_0_4_0_3_0; }
+		
+		//preConditionName=ID
+		public Assignment getPreConditionNameAssignment_2_0_4_0_3_1() { return cPreConditionNameAssignment_2_0_4_0_3_1; }
+		
+		//ID
+		public RuleCall getPreConditionNameIDTerminalRuleCall_2_0_4_0_3_1_0() { return cPreConditionNameIDTerminalRuleCall_2_0_4_0_3_1_0; }
+		
+		//('post' postConditions+=XExpression (',' postConditions+=XExpression)* ('as' postConditionName=ID)?)?
+		public Group getGroup_2_0_4_1() { return cGroup_2_0_4_1; }
+		
+		//'post'
+		public Keyword getPostKeyword_2_0_4_1_0() { return cPostKeyword_2_0_4_1_0; }
+		
+		//postConditions+=XExpression
+		public Assignment getPostConditionsAssignment_2_0_4_1_1() { return cPostConditionsAssignment_2_0_4_1_1; }
+		
+		//XExpression
+		public RuleCall getPostConditionsXExpressionParserRuleCall_2_0_4_1_1_0() { return cPostConditionsXExpressionParserRuleCall_2_0_4_1_1_0; }
+		
+		//(',' postConditions+=XExpression)*
+		public Group getGroup_2_0_4_1_2() { return cGroup_2_0_4_1_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_0_4_1_2_0() { return cCommaKeyword_2_0_4_1_2_0; }
+		
+		//postConditions+=XExpression
+		public Assignment getPostConditionsAssignment_2_0_4_1_2_1() { return cPostConditionsAssignment_2_0_4_1_2_1; }
+		
+		//XExpression
+		public RuleCall getPostConditionsXExpressionParserRuleCall_2_0_4_1_2_1_0() { return cPostConditionsXExpressionParserRuleCall_2_0_4_1_2_1_0; }
+		
+		//('as' postConditionName=ID)?
+		public Group getGroup_2_0_4_1_3() { return cGroup_2_0_4_1_3; }
+		
+		//'as'
+		public Keyword getAsKeyword_2_0_4_1_3_0() { return cAsKeyword_2_0_4_1_3_0; }
+		
+		//postConditionName=ID
+		public Assignment getPostConditionNameAssignment_2_0_4_1_3_1() { return cPostConditionNameAssignment_2_0_4_1_3_1; }
+		
+		//ID
+		public RuleCall getPostConditionNameIDTerminalRuleCall_2_0_4_1_3_1_0() { return cPostConditionNameIDTerminalRuleCall_2_0_4_1_3_1_0; }
+		
 		//expression=XBlockExpression
-		public Assignment getExpressionAssignment_2_0_4() { return cExpressionAssignment_2_0_4; }
+		public Assignment getExpressionAssignment_2_0_5() { return cExpressionAssignment_2_0_5; }
 		
 		//XBlockExpression
-		public RuleCall getExpressionXBlockExpressionParserRuleCall_2_0_4_0() { return cExpressionXBlockExpressionParserRuleCall_2_0_4_0; }
+		public RuleCall getExpressionXBlockExpressionParserRuleCall_2_0_5_0() { return cExpressionXBlockExpressionParserRuleCall_2_0_5_0; }
 		
 		//{SarlCapacityUses.annotationInfo=current} 'uses' capacities+=JvmParameterizedTypeReference (','
 		//capacities+=JvmParameterizedTypeReference)* ';'?
@@ -2497,8 +2635,9 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		//name=FunctionID ('(' (parameters+=Parameter (',' parameters+=Parameter)*)? ')')? (':'
 		//(returnType=TypeReferenceWithTypeArgs | returnType=TypeReferenceNoTypeArgs))? (('throws' exceptions+=JvmTypeReference
 		//(',' exceptions+=JvmTypeReference)*)? & ('fires' firedEvents+=JvmTypeReference (',' firedEvents+=JvmTypeReference)*)? &
-		//('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?) (expression=XBlockExpression |
-		//';')?
+		//('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)? & ('pre' preConditions+=XExpression
+		//(',' preConditions+=XExpression)* ('as' preConditionsName=ID)?)? & ('post' postConditions+=XExpression (','
+		//postConditions+=XExpression)* ('as' postConditionName=ID)?)?) (expression=XBlockExpression | ';')?
 		public Group getGroup_2_5() { return cGroup_2_5; }
 		
 		//{SarlAction.annotationInfo=current}
@@ -2617,7 +2756,9 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)? & ('fires' firedEvents+=JvmTypeReference
 		//(',' firedEvents+=JvmTypeReference)*)? & ('with' typeParameters+=JvmTypeParameter (','
-		//typeParameters+=JvmTypeParameter)*)?
+		//typeParameters+=JvmTypeParameter)*)? & ('pre' preConditions+=XExpression (',' preConditions+=XExpression)* ('as'
+		//preConditionsName=ID)?)? & ('post' postConditions+=XExpression (',' postConditions+=XExpression)* ('as'
+		//postConditionName=ID)?)?
 		public UnorderedGroup getUnorderedGroup_2_5_8() { return cUnorderedGroup_2_5_8; }
 		
 		//('throws' exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
@@ -2691,6 +2832,78 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//JvmTypeParameter
 		public RuleCall getTypeParametersJvmTypeParameterParserRuleCall_2_5_8_2_2_1_0() { return cTypeParametersJvmTypeParameterParserRuleCall_2_5_8_2_2_1_0; }
+		
+		//('pre' preConditions+=XExpression (',' preConditions+=XExpression)* ('as' preConditionsName=ID)?)?
+		public Group getGroup_2_5_8_3() { return cGroup_2_5_8_3; }
+		
+		//'pre'
+		public Keyword getPreKeyword_2_5_8_3_0() { return cPreKeyword_2_5_8_3_0; }
+		
+		//preConditions+=XExpression
+		public Assignment getPreConditionsAssignment_2_5_8_3_1() { return cPreConditionsAssignment_2_5_8_3_1; }
+		
+		//XExpression
+		public RuleCall getPreConditionsXExpressionParserRuleCall_2_5_8_3_1_0() { return cPreConditionsXExpressionParserRuleCall_2_5_8_3_1_0; }
+		
+		//(',' preConditions+=XExpression)*
+		public Group getGroup_2_5_8_3_2() { return cGroup_2_5_8_3_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_5_8_3_2_0() { return cCommaKeyword_2_5_8_3_2_0; }
+		
+		//preConditions+=XExpression
+		public Assignment getPreConditionsAssignment_2_5_8_3_2_1() { return cPreConditionsAssignment_2_5_8_3_2_1; }
+		
+		//XExpression
+		public RuleCall getPreConditionsXExpressionParserRuleCall_2_5_8_3_2_1_0() { return cPreConditionsXExpressionParserRuleCall_2_5_8_3_2_1_0; }
+		
+		//('as' preConditionsName=ID)?
+		public Group getGroup_2_5_8_3_3() { return cGroup_2_5_8_3_3; }
+		
+		//'as'
+		public Keyword getAsKeyword_2_5_8_3_3_0() { return cAsKeyword_2_5_8_3_3_0; }
+		
+		//preConditionsName=ID
+		public Assignment getPreConditionsNameAssignment_2_5_8_3_3_1() { return cPreConditionsNameAssignment_2_5_8_3_3_1; }
+		
+		//ID
+		public RuleCall getPreConditionsNameIDTerminalRuleCall_2_5_8_3_3_1_0() { return cPreConditionsNameIDTerminalRuleCall_2_5_8_3_3_1_0; }
+		
+		//('post' postConditions+=XExpression (',' postConditions+=XExpression)* ('as' postConditionName=ID)?)?
+		public Group getGroup_2_5_8_4() { return cGroup_2_5_8_4; }
+		
+		//'post'
+		public Keyword getPostKeyword_2_5_8_4_0() { return cPostKeyword_2_5_8_4_0; }
+		
+		//postConditions+=XExpression
+		public Assignment getPostConditionsAssignment_2_5_8_4_1() { return cPostConditionsAssignment_2_5_8_4_1; }
+		
+		//XExpression
+		public RuleCall getPostConditionsXExpressionParserRuleCall_2_5_8_4_1_0() { return cPostConditionsXExpressionParserRuleCall_2_5_8_4_1_0; }
+		
+		//(',' postConditions+=XExpression)*
+		public Group getGroup_2_5_8_4_2() { return cGroup_2_5_8_4_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_5_8_4_2_0() { return cCommaKeyword_2_5_8_4_2_0; }
+		
+		//postConditions+=XExpression
+		public Assignment getPostConditionsAssignment_2_5_8_4_2_1() { return cPostConditionsAssignment_2_5_8_4_2_1; }
+		
+		//XExpression
+		public RuleCall getPostConditionsXExpressionParserRuleCall_2_5_8_4_2_1_0() { return cPostConditionsXExpressionParserRuleCall_2_5_8_4_2_1_0; }
+		
+		//('as' postConditionName=ID)?
+		public Group getGroup_2_5_8_4_3() { return cGroup_2_5_8_4_3; }
+		
+		//'as'
+		public Keyword getAsKeyword_2_5_8_4_3_0() { return cAsKeyword_2_5_8_4_3_0; }
+		
+		//postConditionName=ID
+		public Assignment getPostConditionNameAssignment_2_5_8_4_3_1() { return cPostConditionNameAssignment_2_5_8_4_3_1; }
+		
+		//ID
+		public RuleCall getPostConditionNameIDTerminalRuleCall_2_5_8_4_3_1_0() { return cPostConditionNameIDTerminalRuleCall_2_5_8_4_3_1_0; }
 		
 		//(expression=XBlockExpression | ';')?
 		public Alternatives getAlternatives_2_5_9() { return cAlternatives_2_5_9; }
@@ -5916,8 +6129,9 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 	//// Members for agent-oriented types
 	//AOPMember xtend::XtendMember:
 	//	{xtend::XtendMember} annotations+=XAnnotation* ({SarlBehaviorUnit.annotationInfo=current}
-	//	'on' name=JvmParameterizedTypeReference ('[' guard=XExpression ']')?
-	//	expression=XBlockExpression
+	//	'on' name=JvmParameterizedTypeReference ('[' guard=XExpression ']')? (('pre' preConditions+=XExpression (','
+	//	preConditions+=XExpression)* ('as' preConditionName=ID)?)? ('post' postConditions+=XExpression (','
+	//	postConditions+=XExpression)* ('as' postConditionName=ID)?)?) expression=XBlockExpression
 	//	| {SarlCapacityUses.annotationInfo=current}
 	//	'uses' capacities+=JvmParameterizedTypeReference (',' capacities+=JvmParameterizedTypeReference)* ';'?
 	//	| {SarlRequiredCapacity.annotationInfo=current}
@@ -5942,8 +6156,10 @@ public class SARLGrammarAccess extends AbstractGrammarElementFinder {
 	//	')')? (':' (returnType=TypeReferenceWithTypeArgs | returnType=TypeReferenceNoTypeArgs))? (('throws'
 	//	exceptions+=JvmTypeReference (',' exceptions+=JvmTypeReference)*)?
 	//	& ('fires' firedEvents+=JvmTypeReference (',' firedEvents+=JvmTypeReference)*)?
-	//	& ('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?) (expression=XBlockExpression |
-	//	';')?
+	//	& ('with' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)*)?
+	//	& ('pre' preConditions+=XExpression (',' preConditions+=XExpression)* ('as' preConditionsName=ID)?)?
+	//	& ('post' postConditions+=XExpression (',' postConditions+=XExpression)* ('as' postConditionName=ID)?)?)
+	//	(expression=XBlockExpression | ';')?
 	//	| {SarlClass.annotationInfo=current} modifiers+=CommonModifier*
 	//	'class' name=ValidID ('<' typeParameters+=JvmTypeParameter (',' typeParameters+=JvmTypeParameter)* '>')? (('extends'
 	//	extends=JvmParameterizedTypeReference)?
