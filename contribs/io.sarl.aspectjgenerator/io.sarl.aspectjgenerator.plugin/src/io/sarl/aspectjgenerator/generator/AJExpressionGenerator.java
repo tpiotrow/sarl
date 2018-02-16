@@ -302,6 +302,11 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 		// variable which we want to control the value. That's why we generate
 		// and refer to the new value assigned, represented by $$val$$.
 		it.append("$$val$$");
+
+		/* FIXME : calling this generation while in around advice will result in non-compilable pre/postcondition.
+		 * We should know which case we're generating and take action accordingly.
+		 */
+
 		return featureCall;
 	}
 

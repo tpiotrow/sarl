@@ -22,11 +22,10 @@
 package io.sarl.aspectjgenerator.generator;
 
 import com.google.inject.Inject;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend.core.xtend.XtendMember;
 import org.eclipse.xtend.core.xtend.XtendParameter;
-import org.eclipse.xtext.common.types.JvmTypeParameter;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xtype.XImportDeclaration;
 
 import io.sarl.aspectjgenerator.AJGeneratorPlugin;
@@ -132,11 +131,102 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		// TODO : get generated expression from generator and add it to debug message
 		it.append("Logger.getLogger(" + agentName +  ".class.getSimpleName())"
 				+ ".severe(\"Invariant broken with value: \" + $$val$$);");
+
+		// If additional actions should be taken from the breaking of invariant, add them here
+
 		it.decreaseIndentation().newLine();
 		it.append("}"); //$NON-NLS-1$ // If statement closed
 
 		it.decreaseIndentation().newLine();
 		it.append("}"); //$NON-NLS-1$ // Advice closed
+	}
+
+	/** Generate the advices related to the pre and post conditions of the action.
+	 * @param action the method or behavior unit.
+	 * @param agentName the name of the agent containing the method.
+	 * @param appendable the appendable.
+	 * @param context the context.
+	 */
+	@SuppressWarnings("checkstyle:npathcomplexity")
+	private void generatePrePostConditions(SarlAction action, String agentName, AJAppendable appendable,
+			IExtraLanguageGeneratorContext context) {
+
+		final String returnType = action.getReturnType() == null ? "void" : action.getReturnType().getSimpleName();
+		final EList<XtendParameter> parameters = action.getParameters();
+
+		// Advice header
+		appendable.append(returnType);
+		appendable.append(" around(");
+		for (int i = 0; i < parameters.size(); i++) {
+			appendable.append(parameters.get(i).getName());
+			if (i != parameters.size() - 1) {
+				appendable.append(", ");
+			}
+		}
+		appendable.append(") : call(");
+		appendable.append(returnType);
+		appendable.append(" ");
+		appendable.append(agentName);
+		appendable.append(".");
+		appendable.append(action.getName());
+		appendable.append("(");
+		for (int j = 0; j < parameters.size(); j++) {
+			appendable.append(action.getParameters().get(j).getParameterType().getSimpleName());
+			if (j != action.getParameters().size() - 1) {
+				appendable.append(",");
+			}
+		}
+		appendable.append(") ) {");
+		appendable.increaseIndentation().newLine();
+
+		// Advice body
+
+		// Pre/Post condition rule
+		appendable.append("if (!(");
+		for (int k = 0; k < action.getPreConditions().size(); k++) {
+			getExpressionGenerator().generate(action.getPreConditions().get(k), appendable, context);
+			if (k != action.getPreConditions().size() - 1) {
+				appendable.append(" && ");
+			}
+		}
+
+		if (action.getPreConditions().size() != 0 && action.getPostConditions().size() != 0) {
+			appendable.append(" && ");
+		}
+
+		for (int l = 0; l < action.getPostConditions().size(); l++) {
+			getExpressionGenerator().generate(action.getPostConditions().get(l), appendable, context);
+			if (l != action.getPostConditions().size() - 1) {
+				appendable.append(" && ");
+			}
+		}
+
+		appendable.append(") ) {"); //$NON-NLS-1$
+		appendable.increaseIndentation().newLine();
+
+		// TODO : get generated expression from generator and add it to debug message
+		appendable.append("Logger.getLogger(" + agentName +  ".class.getSimpleName())"
+				+ ".severe(\"PrePostCondition broken with value: \");");
+
+		// If additional actions should be taken when the rule is broken, add them here
+
+		appendable.decreaseIndentation().newLine();
+		appendable.append("}"); //$NON-NLS-1$ // If statement closed
+
+		// Proceed with inital method
+		if (!"void".equals(returnType)) {
+			appendable.append("return ");
+		}
+		appendable.newLine().append("proceed(");
+		for (int m = 0; m < parameters.size(); m++) {
+			appendable.append(parameters.get(m).getName());
+			if (m != parameters.size() - 1) {
+				appendable.append(", ");
+			}
+		}
+		appendable.append(");");
+		appendable.decreaseIndentation().newLine();
+		appendable.append("}"); //$NON-NLS-1$ // Advice closed
 	}
 
 	/** Generate the given object.
@@ -167,16 +257,17 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		// dynamically, but in the mean time, include it by default.
 		appendable.append("import org.eclipse.xtext.xbase.lib.IntegerRange;").newLine(); //$NON-NLS-1$
 
-		// We have to include the java imports used by the agent, otherwise aspect won't compile
-		for (final XImportDeclaration inport : script.getImportSection().getImportDeclarations()) {
-			if (inport.getImportedTypeName().startsWith("java.")
-					&& !inport.getImportedTypeName().equals("java.util.logging.Logger")) {
-				appendable.append("import " + inport.getImportedTypeName());
-				appendable.append(";");
-				appendable.newLine();
+		if (script.getImportSection() != null) {
+			// We have to include the java imports used by the agent, otherwise aspect won't compile
+			for (final XImportDeclaration inport : script.getImportSection().getImportDeclarations()) {
+				if (inport.getImportedTypeName().startsWith("java.")
+						&& !inport.getImportedTypeName().equals("java.util.logging.Logger")) {
+					appendable.append("import " + inport.getImportedTypeName());
+					appendable.append(";");
+					appendable.newLine();
+				}
 			}
 		}
-
 		appendable.newLine();
 
 		// Aspect section
@@ -202,8 +293,8 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 				}
 			}
 		}
-		appendable.decreaseIndentation().newLine().append("}"); //$NON-NLS-1$
 
+		appendable.decreaseIndentation().newLine().append("}"); //$NON-NLS-1$
 		/*
 		 * Initially, the QN contains the correct agent name. However, appending
 		 * the string "Aspect" would create a new segement, which we don't want.
@@ -211,70 +302,6 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		 * the correct QN.
 		 */
 		writeFile(agentName.skipLast(1).append(agent.getName() + "Aspect"), appendable, context);
-	}
-
-	/** Generate the advices related to the pre and post conditions of the action.
-	 * @param action the method or behavior unit.
-	 * @param agentName the name of the agent containing the method.
-	 * @param appendable the appendable.
-	 * @param context the context.
-	 */
-	private void generatePrePostConditions(SarlAction action, String agentName, AJAppendable appendable,
-			IExtraLanguageGeneratorContext context) {
-
-		// advice header
-		final String returnType = action.getReturnType() == null ? "void" : action.getReturnType().getSimpleName();
-
-		appendable.append(returnType);
-		appendable.append(" around(");
-		appendable.append(") : call(");
-		appendable.append(returnType);
-		appendable.append(" ");
-		appendable.append(agentName);
-		appendable.append(".");
-		appendable.append(action.getName());
-		appendable.append("(");
-		for (int i = 0; i < action.getParameters().size(); i++) {
-			final XtendParameter parameter = action.getParameters().get(i);
-			appendable.append(parameter.getName());
-			if (i != action.getTypeParameters().size() - 1) {
-				appendable.append(",");
-			}
-		}
-		appendable.append(") {");
-		appendable.increaseIndentation().newLine();
-
-		// Adivce body
-		appendable.append("if (!(");
-		for (int j = 0; j < action.getPreConditions().size(); j++) {
-			final XExpression precondition = action.getPreConditions().get(j);
-			getExpressionGenerator().generate(precondition, appendable, context);
-			if (j != action.getPreConditions().size() - 1) {
-				appendable.append(" && ");
-			}
-		}
-		if (action.getPreConditions().size() != 0 && action.getPostConditions().size() != 0) {
-			appendable.append(" && ");
-		}
-		for (int k = 0; k < action.getPostConditions().size(); k++) {
-			final XExpression postConditions = action.getPostConditions().get(k);
-			getExpressionGenerator().generate(postConditions, appendable, context);
-			if (k != action.getPostConditions().size() - 1) {
-				appendable.append(" && ");
-			}
-		}
-
-		appendable.append(") ) {"); //$NON-NLS-1$
-		appendable.increaseIndentation().newLine();
-
-		// TODO : get generated expression from generator and add it to debug message
-		appendable.append("Logger.getLogger(" + agentName +  ".class.getSimpleName())"
-				+ ".severe(\"PrePostCondition broken with value: \");");
-		appendable.decreaseIndentation().newLine();
-		appendable.append("}"); //$NON-NLS-1$ // If statement closed
-
-		appendable.decreaseIndentation().newLine();
-		appendable.append("}"); //$NON-NLS-1$ // Advice closed
 	}
 
 }
