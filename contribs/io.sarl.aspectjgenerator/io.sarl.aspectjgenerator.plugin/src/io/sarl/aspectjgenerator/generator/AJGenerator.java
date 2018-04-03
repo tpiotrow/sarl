@@ -56,19 +56,38 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 
 	//private static final Logger ASPECTJ_GENERATOR_LOGGER = Logger.getLogger(AJGenerator.class.getSimpleName());
 
-	private AJExpressionGenerator expressionGenerator;
+	private AJInvariantExpressionGenerator invariantExpressionGenerator;
+
+	private AJPrePostExpressionGenerator prepostExpressionGenerator;
 
 	@Override
 	public IExpressionGenerator getExpressionGenerator() {
-		return this.expressionGenerator;
+		// FIXME : may break things but, seriously, WHO CARES ?
+		return null;
+	}
+
+	public IExpressionGenerator getInvariantExpressionGenerator() {
+		return this.invariantExpressionGenerator;
 	}
 
 	/** Sets the expression generator.
 	 * @param generator the expression generator to set
 	 */
 	@Inject
-	public void setExpressionGenerator(AJExpressionGenerator generator) {
-		this.expressionGenerator = generator;
+	public void setInvariantExpressionGenerator(AJInvariantExpressionGenerator generator) {
+		this.invariantExpressionGenerator = generator;
+	}
+
+	public IExpressionGenerator getPrePostExpressionGenerator() {
+		return this.prepostExpressionGenerator;
+	}
+
+	/** Sets the expression generator.
+	 * @param generator the expression generator to set
+	 */
+	@Inject
+	public void setPrePostExpressionGenerator(AJPrePostExpressionGenerator generator) {
+		this.prepostExpressionGenerator = generator;
 	}
 
 	@Override
@@ -88,16 +107,16 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 
 	@Override
 	protected AJAppendable createAppendable(IExtraLanguageGeneratorContext context) {
-		return new AJAppendable(getTypeConverter(context));
+		return new AJAppendable(null);
 	}
 
 	@Override
 	protected void generateImportStatement(QualifiedName importedQualifiedName, ExtraLanguageAppendable appendable,
 			IExtraLanguageGeneratorContext context) {
 		super.generateImportStatement(importedQualifiedName, appendable, context);
-		appendable.append("import ");
+		appendable.append("import "); //$NON-NLS-1$
 		appendable.append(importedQualifiedName.toString());
-		appendable.append(";");
+		appendable.append(";"); //$NON-NLS-1$
 		appendable.newLine();
 	}
 
@@ -124,13 +143,13 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 
 		// Before advice body
 		it.append("if ( !("); //$NON-NLS-1$
-		getExpressionGenerator().generate(member.getInvariant().getCondition(), it, context);
-		it.append(") ) {"); //$NON-NLS-1$
+		getInvariantExpressionGenerator().generate(member.getInvariant().getCondition(), it, context);
+		it.append(")) {"); //$NON-NLS-1$
 		it.increaseIndentation().newLine();
 
 		// TODO : get generated expression from generator and add it to debug message
-		it.append("Logger.getLogger(" + agentName +  ".class.getSimpleName())"
-				+ ".severe(\"Invariant broken with value: \" + $$val$$);");
+		it.append("Logger.getLogger(" + agentName +  ".class.getSimpleName())" //$NON-NLS-1$ //$NON-NLS-2$
+				+ ".severe(\"Invariant broken with value: \" + $$val$$);"); //$NON-NLS-1$
 
 		// If additional actions should be taken from the breaking of invariant, add them here
 
@@ -151,62 +170,75 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 	private void generatePrePostConditions(SarlAction action, String agentName, AJAppendable appendable,
 			IExtraLanguageGeneratorContext context) {
 
-		final String returnType = action.getReturnType() == null ? "void" : action.getReturnType().getSimpleName();
+		final String returnType = action.getReturnType() == null ? "void" : action.getReturnType().getSimpleName(); //$NON-NLS-1$
 		final EList<XtendParameter> parameters = action.getParameters();
 
 		// Advice header
 		appendable.append(returnType);
-		appendable.append(" around(");
+		appendable.append(" around("); //$NON-NLS-1$
 		for (int i = 0; i < parameters.size(); i++) {
+			appendable.append(parameters.get(i).getParameterType().getSimpleName());
+			appendable.append(" "); //$NON-NLS-1$
 			appendable.append(parameters.get(i).getName());
 			if (i != parameters.size() - 1) {
-				appendable.append(", ");
+				appendable.append(", "); //$NON-NLS-1$
 			}
 		}
-		appendable.append(") : call(");
+		appendable.append(") : call("); //$NON-NLS-1$
 		appendable.append(returnType);
-		appendable.append(" ");
+		appendable.append(" "); //$NON-NLS-1$
 		appendable.append(agentName);
-		appendable.append(".");
+		appendable.append("."); //$NON-NLS-1$
 		appendable.append(action.getName());
-		appendable.append("(");
-		for (int j = 0; j < parameters.size(); j++) {
-			appendable.append(action.getParameters().get(j).getParameterType().getSimpleName());
-			if (j != action.getParameters().size() - 1) {
-				appendable.append(",");
+		appendable.append("("); //$NON-NLS-1$
+		for (int i = 0; i < parameters.size(); i++) {
+			appendable.append(action.getParameters().get(i).getParameterType().getSimpleName());
+			if (i != action.getParameters().size() - 1) {
+				appendable.append(","); //$NON-NLS-1$
 			}
 		}
-		appendable.append(") ) {");
+		appendable.append(")) "); //$NON-NLS-1$
+		if (!parameters.isEmpty()) {
+			appendable.append("&& args("); //$NON-NLS-1$
+			for (int i = 0; i < parameters.size(); i++) {
+				appendable.append(parameters.get(i).getName());
+				if (i != action.getParameters().size() - 1) {
+					appendable.append(","); //$NON-NLS-1$
+				}
+			}
+			appendable.append(")"); //$NON-NLS-1$
+		}
+		appendable.append(" {"); //$NON-NLS-1$
 		appendable.increaseIndentation().newLine();
 
 		// Advice body
 
 		// Pre/Post condition rule
-		appendable.append("if (!(");
-		for (int k = 0; k < action.getPreConditions().size(); k++) {
-			getExpressionGenerator().generate(action.getPreConditions().get(k), appendable, context);
-			if (k != action.getPreConditions().size() - 1) {
-				appendable.append(" && ");
+		appendable.append("if (!("); //$NON-NLS-1$
+		for (int i = 0; i < action.getPreConditions().size(); i++) {
+			getPrePostExpressionGenerator().generate(action.getPreConditions().get(i), appendable, context);
+			if (i != action.getPreConditions().size() - 1) {
+				appendable.append(" && "); //$NON-NLS-1$
 			}
 		}
 
 		if (action.getPreConditions().size() != 0 && action.getPostConditions().size() != 0) {
-			appendable.append(" && ");
+			appendable.append(" && "); //$NON-NLS-1$
 		}
 
-		for (int l = 0; l < action.getPostConditions().size(); l++) {
-			getExpressionGenerator().generate(action.getPostConditions().get(l), appendable, context);
-			if (l != action.getPostConditions().size() - 1) {
-				appendable.append(" && ");
+		for (int i = 0; i < action.getPostConditions().size(); i++) {
+			getPrePostExpressionGenerator().generate(action.getPostConditions().get(i), appendable, context);
+			if (i != action.getPostConditions().size() - 1) {
+				appendable.append(" && "); //$NON-NLS-1$
 			}
 		}
 
-		appendable.append(") ) {"); //$NON-NLS-1$
+		appendable.append(")) {"); //$NON-NLS-1$
 		appendable.increaseIndentation().newLine();
 
 		// TODO : get generated expression from generator and add it to debug message
-		appendable.append("Logger.getLogger(" + agentName +  ".class.getSimpleName())"
-				+ ".severe(\"PrePostCondition broken with value: \");");
+		appendable.append("Logger.getLogger(" + agentName +  ".class.getSimpleName())" //$NON-NLS-1$ //$NON-NLS-2$
+				+ ".severe(\"PrePostCondition broken with value: \");"); //$NON-NLS-1$
 
 		// If additional actions should be taken when the rule is broken, add them here
 
@@ -214,17 +246,17 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		appendable.append("}"); //$NON-NLS-1$ // If statement closed
 
 		// Proceed with inital method
-		if (!"void".equals(returnType)) {
-			appendable.append("return ");
+		if (!"void".equals(returnType)) { //$NON-NLS-1$
+			appendable.append("return "); //$NON-NLS-1$
 		}
-		appendable.newLine().append("proceed(");
-		for (int m = 0; m < parameters.size(); m++) {
-			appendable.append(parameters.get(m).getName());
-			if (m != parameters.size() - 1) {
-				appendable.append(", ");
+		appendable.newLine().append("proceed("); //$NON-NLS-1$
+		for (int i = 0; i < parameters.size(); i++) {
+			appendable.append(parameters.get(i).getName());
+			if (i != parameters.size() - 1) {
+				appendable.append(", "); //$NON-NLS-1$
 			}
 		}
-		appendable.append(");");
+		appendable.append(");"); //$NON-NLS-1$
 		appendable.decreaseIndentation().newLine();
 		appendable.append("}"); //$NON-NLS-1$ // Advice closed
 	}
@@ -239,15 +271,15 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		final QualifiedName agentName = getQualifiedNameProvider().getFullyQualifiedName(agent);
 
 		if (!(agent.eContainer() instanceof SarlScript)) {
-			throw new IllegalStateException("Agent not contained in script");
+			throw new IllegalStateException("Agent not contained in script"); //$NON-NLS-1$
 		}
 
 		final SarlScript script = (SarlScript) agent.eContainer();
 
 		// Imports section
-		appendable.append("package ");
+		appendable.append("package "); //$NON-NLS-1$
 		appendable.append(agentName.skipLast(1).toString());
-		appendable.append(";");
+		appendable.append(";"); //$NON-NLS-1$
 
 		appendable.newLine().newLine();
 
@@ -260,10 +292,10 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		if (script.getImportSection() != null) {
 			// We have to include the java imports used by the agent, otherwise aspect won't compile
 			for (final XImportDeclaration inport : script.getImportSection().getImportDeclarations()) {
-				if (inport.getImportedTypeName().startsWith("java.")
-						&& !inport.getImportedTypeName().equals("java.util.logging.Logger")) {
-					appendable.append("import " + inport.getImportedTypeName());
-					appendable.append(";");
+				if (inport.getImportedTypeName().startsWith("java.") //$NON-NLS-1$
+						&& !inport.getImportedTypeName().equals("java.util.logging.Logger")) { //$NON-NLS-1$
+					appendable.append("import " + inport.getImportedTypeName()); //$NON-NLS-1$
+					appendable.append(";"); //$NON-NLS-1$
 					appendable.newLine();
 				}
 			}
@@ -301,7 +333,7 @@ public class AJGenerator extends AbstractExtraLanguageGenerator {
 		 * That's why we have to skip the last segment and recreate it to form
 		 * the correct QN.
 		 */
-		writeFile(agentName.skipLast(1).append(agent.getName() + "Aspect"), appendable, context);
+		writeFile(agentName.skipLast(1).append(agent.getName() + "Aspect"), appendable, context); //$NON-NLS-1$
 	}
 
 }

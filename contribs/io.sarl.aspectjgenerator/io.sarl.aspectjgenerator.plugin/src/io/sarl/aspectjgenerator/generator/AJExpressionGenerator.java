@@ -54,7 +54,7 @@ import io.sarl.lang.compiler.extra.IExtraLanguageGeneratorContext;
  * @mavengroupid $GroupId$
  * @mavenartifactid $ArtifactId$
  */
-public class AJExpressionGenerator extends AbstractExpressionGenerator {
+public abstract class AJExpressionGenerator extends AbstractExpressionGenerator {
 
 	/** {@inheritDoc}
 	 */
@@ -138,11 +138,11 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 				generate(operation.getRightOperand(), it, context);
 				break;
 			case "..": //$NON-NLS-1$
-				it.append("new IntegerRange(");
+				it.append("new IntegerRange("); //$NON-NLS-1$
 				generate(operation.getLeftOperand(), it, context);
-				it.append(",");
+				it.append(","); //$NON-NLS-1$
 				generate(operation.getRightOperand(), it, context);
-				it.append(")");
+				it.append(")"); //$NON-NLS-1$
 				break;
 			default:
 				throw new IllegalArgumentException(MessageFormat.format(Messages.AJExpressionGenerator_0, operator));
@@ -296,19 +296,7 @@ public class AJExpressionGenerator extends AbstractExpressionGenerator {
 	 * @return the literal.
 	 */
 	@SuppressWarnings("static-method")
-	protected XExpression _generate(XFeatureCall featureCall, IAppendable it, IExtraLanguageGeneratorContext context) {
-		// The feature call in this context filters a variable or a field. Most
-		// of the time, the filtered expression will refer to the invariant
-		// variable which we want to control the value. That's why we generate
-		// and refer to the new value assigned, represented by $$val$$.
-		it.append("$$val$$");
-
-		/* FIXME : calling this generation while in around advice will result in non-compilable pre/postcondition.
-		 * We should know which case we're generating and take action accordingly.
-		 */
-
-		return featureCall;
-	}
+	protected abstract XExpression _generate(XFeatureCall featureCall, IAppendable it, IExtraLanguageGeneratorContext context);
 
 	/** Generate the given object.
 	 *
